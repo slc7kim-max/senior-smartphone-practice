@@ -1089,6 +1089,7 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     renderNav();
     try { if (window.scrollTo) window.scrollTo(0, 0); } catch (e) {}
     if (name === '2') renderSwipe();
+    if (name === '5') { renderQuiz(); syncQuizMsg(); }
   }
 
   function renderNav() {
@@ -1472,6 +1473,19 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     }
     renderQuiz();
     say('quizMsg', '아까운데요. 다시 한 번 생각해 보세요. 정답은 하나뿐이에요.', 'warn');
+    return false;
+  }
+  /* 화면을 다시 열었을 때 문제 상태에 맞는 안내 문구 */
+  function syncQuizMsg() {
+    if (quizSolvedCount() >= QUIZ.length) {
+      say('quizMsg', '여섯 문제를 모두 맞히셨어요! 다시 풀려면 [이 연습 다시 하기]를 눌러 주세요.', 'good');
+      return false;
+    }
+    if (state.quizSolved[quizIndexNow()]) {
+      say('quizMsg', '이미 맞히신 문제예요. [다음 문제]를 눌러 주세요.', 'good');
+      return true;
+    }
+    say('quizMsg', '보기 세 개 중에 알맞은 것을 눌러 주세요.', '');
     return false;
   }
   function nextQuiz() {
