@@ -50,20 +50,30 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-o
 }
 .brand h1{margin:0;font-size:24px;font-weight:900;letter-spacing:-.5px;line-height:1.25}
 .brand p{margin:2px 0 0;font-size:14px;color:rgba(255,255,255,.86);font-weight:700}
+.brandtext{flex:1;min-width:0}
+/* 소리 켜기/끄기 */
+.soundbtn{
+  flex:0 0 auto;min-height:48px;padding:6px 12px;border-radius:999px;
+  border:2px solid rgba(255,255,255,.6);background:rgba(255,255,255,.18);color:#fff;
+  font-size:15px;font-weight:900;display:flex;align-items:center;gap:6px;line-height:1.15;
+}
+.soundbtn .sbi{font-size:20px;line-height:1}
+.soundbtn:active{background:rgba(255,255,255,.34)}
+.soundbtn[aria-pressed="false"]{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.82)}
 .reassure{
   margin:12px 0 10px; padding:12px 10px; border-radius:14px;
   background:var(--gold); color:var(--gold-ink);
   font-size:20px; font-weight:900; text-align:center; letter-spacing:-.3px;
   box-shadow:0 3px 0 rgba(0,0,0,.14);
 }
-.stamprow{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.stamprow{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
 .stamp{
   min-height:64px; padding:6px 2px; border-radius:12px; text-align:center;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
   background:rgba(255,255,255,.13); border:1.5px dashed rgba(255,255,255,.4);
 }
 .stamp .si{font-size:20px;line-height:1.1;filter:grayscale(1);opacity:.75}
-.stamp .sl{font-size:12.5px;font-weight:900;color:rgba(255,255,255,.92)}
+.stamp .sl{font-size:11.5px;font-weight:900;color:rgba(255,255,255,.92)}
 .stamp.on{background:#FFF7E6;border:2px solid var(--gold)}
 .stamp.on .si{filter:none;opacity:1}
 .stamp.on .sl{color:var(--navy-ink)}
@@ -249,6 +259,50 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
 .tile.on .tname{color:#fff}
 .tile.on .tstate{color:var(--gold-2)}
 
+/* 코스 5 - 기본 용어 */
+.termgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:0 0 12px}
+.tile .temoji{font-size:30px;line-height:1.05}
+.tile.sel{background:var(--gold);border-color:#D97706;color:var(--gold-ink)}
+.tile.sel .tname{color:var(--gold-ink)}
+.tile.sel .tstate{color:#7C4A03}
+.termdetail{margin:0 0 10px;padding:14px;border-radius:16px;background:#EFF4FF;border:2px solid #C7D2E8;animation:fadeIn .2s ease-out}
+.termdetail.empty{background:var(--cream);border-color:#F6E3B4}
+.tdname{margin:0 0 6px;font-size:23px;font-weight:900;color:var(--navy);letter-spacing:-.4px;line-height:1.35}
+.termdetail.empty .tdname{color:#7C4A03;font-size:20px}
+.tdbody{margin:0;font-size:18px;font-weight:700;color:#334155;line-height:1.62}
+.termdetail.empty .tdbody{color:#7C4A03}
+
+/* 코스 5 - 퀴즈 */
+.qhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 10px}
+.qnum{margin:0;font-size:17px;font-weight:900;color:var(--amber)}
+.qscore{margin:0;font-size:17px;font-weight:900;color:var(--green)}
+.quizq{margin:0 0 14px;font-size:22px;font-weight:900;color:var(--navy);line-height:1.45;letter-spacing:-.3px}
+.opts{display:flex;flex-direction:column;gap:10px;margin:0 0 12px}
+.opt{
+  width:100%;min-height:66px;border-radius:16px;border:2.5px solid #C7D2E8;background:#fff;
+  font-size:20px;font-weight:900;color:var(--navy);padding:10px 14px;text-align:left;
+  display:flex;align-items:center;gap:10px;line-height:1.35;
+}
+.opt:active{transform:translateY(2px)}
+.opt .onum{
+  width:34px;height:34px;flex:0 0 34px;border-radius:50%;background:#EFF4FF;color:var(--navy);
+  display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;
+}
+.opt .otext{flex:1;min-width:0}
+.opt.right{background:var(--green-bg);border-color:#4ADE80;color:var(--green)}
+.opt.right .onum{background:var(--green);color:#fff}
+.opt.wrong{background:#FDECEC;border-color:#FCA5A5;color:var(--red)}
+.opt.wrong .onum{background:var(--red);color:#fff}
+
+/* 정답 축하 토스트 */
+.toast{
+  position:fixed;left:50%;top:18%;transform:translate(-50%,-12px) scale(.96);z-index:60;
+  padding:14px 24px;border-radius:999px;color:#fff;font-size:24px;font-weight:900;letter-spacing:-.5px;
+  background:linear-gradient(160deg,#15803D,#16A34A);box-shadow:0 12px 30px rgba(21,128,61,.38);
+  opacity:0;pointer-events:none;transition:opacity .18s ease-out, transform .18s ease-out;white-space:nowrap;
+}
+.toast.show{opacity:1;transform:translate(-50%,0) scale(1)}
+
 /* 하단 이동 */
 .bottomnav{
   position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:8px;
@@ -271,10 +325,13 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
 <header class="hero">
   <div class="brand">
     <div class="mark" aria-hidden="true">스</div>
-    <div>
+    <div class="brandtext">
       <h1>스마트폰 기초연습장</h1>
       <p>부산스마트IT봉사단 · 어르신 스마트폰 교실</p>
     </div>
+    <button class="soundbtn" id="soundBtn" type="button" aria-pressed="true" aria-label="정답 소리 켜기 또는 끄기">
+      <span class="sbi" id="soundIco" aria-hidden="true">🔊</span><span id="soundTxt">소리 켜짐</span>
+    </button>
   </div>
   <p class="reassure">아무리 눌러도 고장 나지 않아요 😊</p>
   <div class="stamprow" role="list" aria-label="연습 완료 스탬프">
@@ -282,14 +339,15 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     <div class="stamp" id="stamp-2"><span class="si" aria-hidden="true">👉</span><span class="sl">밀기</span></div>
     <div class="stamp" id="stamp-3"><span class="si" aria-hidden="true">⌨️</span><span class="sl">입력</span></div>
     <div class="stamp" id="stamp-4"><span class="si" aria-hidden="true">🔆</span><span class="sl">아이콘</span></div>
+    <div class="stamp" id="stamp-5"><span class="si" aria-hidden="true">📖</span><span class="sl">용어</span></div>
   </div>
   <div class="pbar" aria-hidden="true"><div class="pfill" id="pfill"></div></div>
-  <p class="ptext" id="ptext">4개 중 0개 완료</p>
+  <p class="ptext" id="ptext">5개 중 0개 완료</p>
 </header>
 
 <div class="celebrate" id="allDone" role="status" aria-live="polite" hidden>
   <p class="cel-title">축하합니다! 스마트폰 기초 연습 완료 🎉</p>
-  <p class="cel-sub">네 가지 연습을 모두 해내셨어요. 정말 대단합니다!</p>
+  <p class="cel-sub">다섯 가지 연습을 모두 해내셨어요. 정말 대단합니다!</p>
   <button class="btn btn-soft" id="allDoneBtn" type="button">처음부터 다시 연습하기</button>
 </div>
 
@@ -342,7 +400,17 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
       <span class="carrow" aria-hidden="true">›</span>
     </button>
 
-    <p class="hint-card">💡 이 연습장은 인터넷이 없어도 열려요. 무엇을 잘못 눌러도 아무 일도 일어나지 않으니 마음껏 눌러 보세요.</p>
+    <button class="course" id="start-5" type="button">
+      <span class="cnum">5</span>
+      <span class="ctext">
+        <span class="ctitle">스마트폰 기본 용어</span>
+        <span class="cdesc">낱말 12개 익히고 퀴즈로 맞히기</span>
+        <span class="cstate" id="hc-5">아직이에요</span>
+      </span>
+      <span class="carrow" aria-hidden="true">›</span>
+    </button>
+
+    <p class="hint-card">💡 이 연습장은 인터넷이 없어도 열려요. 무엇을 잘못 눌러도 아무 일도 일어나지 않으니 마음껏 눌러 보세요.<br />정답을 맞히면 <b>박수 소리</b>와 <b>“정답입니다”</b> 소리가 나요. 위쪽 🔊 단추로 소리를 끌 수 있어요.</p>
     <button class="btn btn-soft" id="resetAll" type="button">모두 지우고 처음부터</button>
   </section>
 
@@ -535,7 +603,43 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     <button class="btn btn-soft" id="reset-4" type="button">이 연습 다시 하기</button>
   </section>
 
+  <!-- ============ 코스 5 ============ -->
+  <section class="screen" id="screen-5" aria-label="스마트폰 기본 용어">
+    <div class="chead">
+      <button class="back" id="back-5" type="button">← 처음 화면</button>
+      <h2>스마트폰 기본 용어</h2>
+    </div>
+
+    <p class="step center">낱말 카드를 <b>눌러서</b> 뜻을 읽어 보세요.<br /><span class="small">읽은 낱말은 색이 바뀌고, 낱말 이름을 소리로도 들려줘요.</span></p>
+    <div class="termgrid" id="termGrid"></div>
+    <div class="termdetail empty" id="termDetail" aria-live="polite">
+      <p class="tdname" id="tdName">👆 낱말 카드를 눌러 보세요</p>
+      <p class="tdbody" id="tdBody">궁금한 낱말을 누르면 쉬운 설명이 여기에 크게 나와요.</p>
+    </div>
+    <p class="counter" id="termCount">12개 중 0개 살펴봄</p>
+
+    <div class="panel">
+      <p class="step">이제 <b>퀴즈</b>로 확인해 볼까요? <span class="small">(6문제 · 맞히면 박수 소리와 “정답입니다” 소리)</span></p>
+      <div class="qhead">
+        <p class="qnum" id="quizNum">1 / 6</p>
+        <p class="qscore" id="quizScore">0문제 맞힘</p>
+      </div>
+      <h3 class="quizq" id="quizQ">문제를 준비하고 있어요.</h3>
+      <div class="opts" id="quizOpts">
+        <button class="opt" id="opt-0" type="button"><span class="onum" aria-hidden="true">1</span><span class="otext" id="otext-0">보기</span></button>
+        <button class="opt" id="opt-1" type="button"><span class="onum" aria-hidden="true">2</span><span class="otext" id="otext-1">보기</span></button>
+        <button class="opt" id="opt-2" type="button"><span class="onum" aria-hidden="true">3</span><span class="otext" id="otext-2">보기</span></button>
+      </div>
+      <button class="btn btn-gold" id="quizNext" type="button" hidden>다음 문제 →</button>
+      <p class="msg" id="quizMsg" aria-live="polite">보기 세 개 중에 알맞은 것을 눌러 주세요.</p>
+    </div>
+
+    <button class="btn btn-soft" id="reset-5" type="button">이 연습 다시 하기</button>
+  </section>
+
 </main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <nav class="bottomnav" id="bottomnav" aria-label="연습 이동" hidden>
   <button class="navbtn" id="navPrev" type="button">← 이전</button>
@@ -590,6 +694,48 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
       on: '비행기 모드가 켜졌어요! 전화와 인터넷이 잠시 꺼져요.',
       off: '비행기 모드를 껐어요! 이제 전화를 받을 수 있어요.' }
   ];
+  /* 코스 5 - 스마트폰 기본 용어 (12개) */
+  var TERMS = [
+    { id: 'wifi', ico: '📶', name: '와이파이',
+      body: '전선 없이 쓰는 무선 인터넷이에요. 집이나 카페, 병원에서 공짜로 쓸 수 있어요. 화면 위쪽에 부채꼴 모양이 켜져 있으면 와이파이에 연결된 것이에요.' },
+    { id: 'data', ico: '📱', name: '모바일 데이터',
+      body: '통신사에서 받아 쓰는 인터넷이에요. 와이파이가 안 될 때 이것으로 인터넷을 해요. 달마다 쓸 수 있는 양이 정해져 있으니 아껴 쓰면 좋아요.' },
+    { id: 'bt', ico: '🎧', name: '블루투스',
+      body: '가까이 있는 기기끼리 선 없이 이어 주는 것이에요. 무선 이어폰이나 자동차 오디오를 연결할 때 켜요.' },
+    { id: 'home', ico: '🏠', name: '홈 화면',
+      body: '스마트폰을 켜면 처음 나오는 화면이에요. 앱 아이콘들이 모여 있어요. 화면 아래 동그라미(홈 버튼)를 누르면 언제든 이 화면으로 돌아와요.' },
+    { id: 'back', ico: '◀', name: '뒤로 가기',
+      body: '아까 보던 화면으로 돌아가는 것이에요. 화면 아래 왼쪽의 ◀ 모양을 누르면 한 칸씩 되돌아가요.' },
+    { id: 'noti', ico: '🔔', name: '알림',
+      body: '새 소식이 왔을 때 알려 주는 것이에요. 화면 맨 위를 손가락으로 아래로 내리면 받은 알림이 쭉 보여요.' },
+    { id: 'shot', ico: '📸', name: '화면 캡처',
+      body: '지금 화면을 사진처럼 찍어 저장하는 것이에요. 보통 전원 버튼과 볼륨 낮추기 버튼을 함께 누르면 찍혀요.' },
+    { id: 'app', ico: '🧩', name: '앱(어플)',
+      body: '스마트폰에 깔아서 쓰는 프로그램이에요. 카카오톡도, 유튜브도 모두 앱이에요. 쓰고 싶은 앱은 아이콘을 톡 누르면 열려요.' },
+    { id: 'share', ico: '📤', name: '공유하기',
+      body: '사진이나 글을 다른 사람에게 보내는 것이에요. 보내고 싶은 사진을 열고 공유 모양(↑)을 누르면 카카오톡으로 보낼 수 있어요.' },
+    { id: 'qr', ico: '🔳', name: 'QR코드',
+      body: '네모 안에 들어 있는 무늬예요. 카메라로 비추면 인터넷 주소나 안내 화면이 저절로 열려요.' },
+    { id: 'setting', ico: '⚙️', name: '설정(톱니바퀴)',
+      body: '글씨 크기, 소리, 와이파이, 화면 밝기 같은 것을 바꾸는 곳이에요. 톱니바퀴 모양을 찾아 누르면 돼요.' },
+    { id: 'search', ico: '🔍', name: '검색(돋보기)',
+      body: '알고 싶은 것을 찾는 것이에요. 돋보기 모양을 누르고 궁금한 낱말을 써 넣으면 찾아 줘요.' }
+  ];
+  /* 코스 5 - 쉬운 3지선다 퀴즈 (6문제) */
+  var QUIZ = [
+    { q: '집이나 카페에서 공짜로 쓸 수 있는 무선 인터넷은?', a: 0,
+      opts: ['와이파이', '손전등', '알람'], why: '와이파이는 공짜로 쓰는 무선 인터넷이에요.' },
+    { q: '스마트폰을 켜면 처음 나오는 화면은?', a: 1,
+      opts: ['설정', '홈 화면', '알림'], why: '앱 아이콘이 모여 있는 처음 화면이 홈 화면이에요.' },
+    { q: '사진을 다른 사람에게 보내는 것은?', a: 2,
+      opts: ['지우기', '끄기', '공유하기'], why: '공유하기로 카카오톡에 사진을 보낼 수 있어요.' },
+    { q: '카메라로 비추면 안내 화면이 저절로 열리는 네모 무늬는?', a: 0,
+      opts: ['QR코드', '블루투스', '홈 화면'], why: 'QR코드를 찍으면 주소가 저절로 열려요.' },
+    { q: '스마트폰에 깔아서 쓰는 프로그램을 무엇이라고 할까요?', a: 1,
+      opts: ['충전기', '앱(어플)', '케이블'], why: '카카오톡도 유튜브도 모두 앱이에요.' },
+    { q: '무선 이어폰을 선 없이 연결할 때 켜는 것은?', a: 2,
+      opts: ['손전등', '비행기 모드', '블루투스'], why: '블루투스를 켜면 무선 이어폰이 이어져요.' }
+  ];
 
   /* =====================================================
      상태
@@ -600,11 +746,19 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     cardIndex: 0, cardsSeen: [true, false, false, false], swiped: false,
     fontStep: 1, fontChanged: false,
     typeIndex: 0,
-    tried: {}, swOn: {}
+    tried: {}, swOn: {},
+    termsSeen: {}, termIndex: -1,
+    quizIndex: 0, quizSolved: freshQuizFlags()
   };
   var wasAll = false;
   var current = 'home';
   var holdTimer = null;
+  var picked = -1;
+  var booting = true;
+  var toastTimer = null;
+  var soundOn = true;
+  var audioCtx = null;
+  var noiseBuf = null;
   var store = null;
   try { store = (typeof window !== 'undefined' && window.localStorage) ? window.localStorage : null; } catch (e) { store = null; }
 
@@ -648,8 +802,174 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
   }
 
   /* =====================================================
+     소리 : 박수(Web Audio) + "정답입니다"(Web Speech)
+     - 외부 mp3 없이 한 파일로 동작합니다.
+     ===================================================== */
+  function getCtx() {
+    if (audioCtx) return audioCtx;
+    try {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return null;
+      audioCtx = new AC();
+    } catch (e) { audioCtx = null; }
+    return audioCtx;
+  }
+  function resumeCtx() {
+    var c = getCtx();
+    if (!c) return null;
+    try { if (c.state === 'suspended' && c.resume) c.resume(); } catch (e) {}
+    return c;
+  }
+  function noiseBuffer(c) {
+    if (noiseBuf) return noiseBuf;
+    try {
+      var len = Math.max(1, Math.floor(c.sampleRate * 1.6));
+      noiseBuf = c.createBuffer(1, len, c.sampleRate);
+      var d = noiseBuf.getChannelData(0);
+      for (var i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - (i / len) * 0.35);
+    } catch (e) { noiseBuf = null; }
+    return noiseBuf;
+  }
+  /* 손뼉 한 번 : 필터를 건 짧은 소음 덩어리 */
+  function clapBurst(c, at, gainVal) {
+    var buf = noiseBuffer(c);
+    if (!buf) return;
+    try {
+      var src = c.createBufferSource();
+      src.buffer = buf;
+      var bp = c.createBiquadFilter();
+      bp.type = 'bandpass';
+      bp.frequency.value = 1100 + Math.random() * 1600;
+      bp.Q.value = 1.0 + Math.random() * 1.1;
+      var hp = c.createBiquadFilter();
+      hp.type = 'highpass';
+      hp.frequency.value = 650;
+      var g = c.createGain();
+      g.gain.setValueAtTime(0.0001, at);
+      g.gain.exponentialRampToValueAtTime(Math.max(0.001, gainVal), at + 0.004);
+      g.gain.exponentialRampToValueAtTime(0.0001, at + 0.05 + Math.random() * 0.055);
+      src.connect(bp); bp.connect(hp); hp.connect(g); g.connect(c.destination);
+      try { src.start(at, Math.random() * 1.0, 0.14); } catch (e1) { try { src.start(at); } catch (e2) {} }
+      try { src.stop(at + 0.22); } catch (e3) {}
+    } catch (e) {}
+  }
+  /* 경쾌한 딩동댕 */
+  function ding(c, at) {
+    var notes = [1046.5, 1318.5, 1568.0];
+    for (var i = 0; i < notes.length; i++) {
+      try {
+        var o = c.createOscillator();
+        var g = c.createGain();
+        o.type = 'triangle';
+        o.frequency.value = notes[i];
+        var t = at + i * 0.09;
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(0.15, t + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.55);
+        o.connect(g); g.connect(c.destination);
+        o.start(t); o.stop(t + 0.6);
+      } catch (e) {}
+    }
+  }
+  /* 짝짝짝 박수 소리 (여러 겹의 소음 타격) */
+  function applause(options) {
+    if (!soundOn) return false;
+    var c = resumeCtx();
+    if (!c) return false;
+    var opt = options || {};
+    var played = false;
+    try {
+      var now = c.currentTime + 0.03;
+      ding(c, now);
+      played = true;
+      var count = opt.big ? 92 : 54;
+      var span = opt.big ? 1.75 : 1.2;
+      for (var i = 0; i < count; i++) {
+        var r = Math.pow(i / count, 0.7);
+        var at = now + r * span + Math.random() * 0.022;
+        var gv = (opt.big ? 0.30 : 0.22) * (0.45 + Math.random() * 0.55);
+        clapBurst(c, at, gv);
+      }
+    } catch (e) {}
+    return played;
+  }
+  /* "정답입니다!" 음성 (지원하지 않는 브라우저에서는 조용히 넘어감) */
+  function speak(text) {
+    if (!soundOn) return false;
+    try {
+      var ss = window.speechSynthesis;
+      var U = window.SpeechSynthesisUtterance;
+      if (!ss || !U) return false;
+      try { ss.cancel(); } catch (e) {}
+      var u = new U(String(text));
+      u.lang = 'ko-KR';
+      u.rate = 0.95;
+      u.pitch = 1.05;
+      u.volume = 1;
+      ss.speak(u);
+      return true;
+    } catch (e) { return false; }
+  }
+  /* 정답 : 박수 + "정답입니다!" */
+  function correctSound() {
+    applause({});
+    speak('정답입니다!');
+    return true;
+  }
+  /* 코스 완료 : 박수 + 딩동댕 */
+  function doneSound() { applause({}); return true; }
+  function bigDoneSound() { applause({ big: true }); speak('축하합니다! 모두 해내셨어요.'); return true; }
+  function toast(text) {
+    var el = $('toast');
+    if (!el) return;
+    el.textContent = String(text);
+    if (el.classList) el.classList.add('show');
+    if (toastTimer != null) { try { clearTimeout(toastTimer); } catch (e) {} }
+    try {
+      toastTimer = setTimeout(function () {
+        var e2 = $('toast');
+        if (e2 && e2.classList) e2.classList.remove('show');
+      }, 1600);
+    } catch (e) { toastTimer = null; }
+  }
+  function renderSound() {
+    var btn = $('soundBtn'), ico = $('soundIco'), txt = $('soundTxt');
+    if (ico) ico.textContent = soundOn ? '🔊' : '🔇';
+    if (txt) txt.textContent = soundOn ? '소리 켜짐' : '소리 꺼짐';
+    if (btn && btn.setAttribute) btn.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
+    setCls('soundBtn', 'off', !soundOn);
+  }
+  function setSound(on, playTest) {
+    soundOn = !!on;
+    renderSound();
+    save();
+    if (soundOn && playTest) {
+      var c = resumeCtx();
+      if (c) { try { ding(c, c.currentTime + 0.03); } catch (e) {} }
+    } else if (!soundOn) {
+      try { if (window.speechSynthesis && window.speechSynthesis.cancel) window.speechSynthesis.cancel(); } catch (e) {}
+    }
+    return soundOn;
+  }
+  function toggleSound() { return setSound(!soundOn, true); }
+
+  /* =====================================================
      코스 완료 판정
      ===================================================== */
+  function termDef(id) {
+    for (var i = 0; i < TERMS.length; i++) { if (TERMS[i].id === id) return TERMS[i]; }
+    return null;
+  }
+  function freshQuizFlags() {
+    var a = [];
+    for (var i = 0; i < QUIZ.length; i++) a.push(false);
+    return a;
+  }
+  function quizSolvedCount() {
+    var n = 0;
+    for (var i = 0; i < QUIZ.length; i++) { if (state.quizSolved[i]) n++; }
+    return n;
+  }
   function courseDone(n) {
     if (n === 1) return state.tapDone && state.holdDone;
     if (n === 2) {
@@ -662,14 +982,15 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
       for (var j = 0; j < SWITCHES.length; j++) { if (!state.tried[SWITCHES[j].id]) return false; }
       return true;
     }
+    if (n === 5) return quizSolvedCount() >= QUIZ.length;
     return false;
   }
   function doneCount() {
     var n = 0;
-    for (var i = 1; i <= 4; i++) { if (courseDone(i)) n++; }
+    for (var i = 1; i <= 5; i++) { if (courseDone(i)) n++; }
     return n;
   }
-  function allDone() { return doneCount() === 4; }
+  function allDone() { return doneCount() === 5; }
 
   /* =====================================================
      저장 / 복원
@@ -682,7 +1003,12 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
       fontStep: state.fontStep, fontChanged: state.fontChanged,
       typeIndex: state.typeIndex,
       tried: Object.keys(state.tried),
-      swOn: state.swOn
+      swOn: state.swOn,
+      termsSeen: Object.keys(state.termsSeen),
+      termIndex: state.termIndex,
+      quizIndex: state.quizIndex,
+      quizSolved: state.quizSolved.slice(),
+      sound: soundOn ? 1 : 0
     };
   }
   function save() {
@@ -718,6 +1044,18 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
         if (o.swOn.hasOwnProperty(id) && o.swOn[id] && switchDef(id)) state.swOn[id] = true;
       }
     }
+    state.termsSeen = {};
+    if (o.termsSeen && o.termsSeen.length) {
+      for (var t = 0; t < o.termsSeen.length; t++) { if (termDef(o.termsSeen[t])) state.termsSeen[o.termsSeen[t]] = true; }
+    }
+    state.termIndex = clampInt(o.termIndex, -1, TERMS.length - 1);
+    state.quizIndex = clampInt(o.quizIndex, 0, QUIZ.length - 1);
+    state.quizSolved = freshQuizFlags();
+    if (o.quizSolved && o.quizSolved.length) {
+      for (var z = 0; z < QUIZ.length && z < o.quizSolved.length; z++) state.quizSolved[z] = !!o.quizSolved[z];
+    }
+    if (typeof o.sound === 'number') soundOn = !!o.sound;
+    picked = -1;
     renderAll();
     afterChange();
     return true;
@@ -732,7 +1070,7 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
      ===================================================== */
   function goScreen(name) {
     current = name;
-    var keys = ['home', '1', '2', '3', '4'];
+    var keys = ['home', '1', '2', '3', '4', '5'];
     for (var i = 0; i < keys.length; i++) {
       var el = $('screen-' + keys[i]);
       if (!el || !el.classList) continue;
@@ -745,14 +1083,14 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
 
   function renderNav() {
     setHidden('bottomnav', current === 'home');
-    setHidden('navNext', current === '4');
+    setHidden('navNext', current === '5');
     var idx = ['1', '2', '3', '4'].indexOf(current);
     setHidden('navPrev', idx <= 0);
   }
 
   function nextCourse() {
     var idx = ['1', '2', '3', '4'].indexOf(current);
-    if (idx < 0 || idx >= 3) return false;
+    if (idx < 0 || idx >= 4) return false;
     goScreen(String(idx + 2));
     return true;
   }
@@ -776,6 +1114,8 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
       state.tapDone = true;
       renderTap();
       pulse('tapBtn');
+      doneSound();
+      toast('👏 잘하셨어요!');
       say('tapMsg', '다섯 번 모두 누르셨어요! 이렇게 가볍게 톡 누르면 됩니다 👏', 'good');
     } else {
       renderTap();
@@ -828,6 +1168,8 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
       state.holdActive = false;
       stopHoldTimer();
       renderHold();
+      doneSound();
+      toast('👍 꾹 누르기 성공!');
       say('holdMsg', '꾹 누르기 성공! 이렇게 오래 누르면 새 메뉴가 열려요 👍', 'good');
       afterChange();
       return true;
@@ -881,6 +1223,7 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     }
     goCard(n);
     say('swipeMsg', '잘 넘기셨어요! ' + (n + 1) + '번째 카드입니다.', 'good');
+    if (courseDone(2)) doneSound();
     return true;
   }
   function swipeGesture(d) {
@@ -919,6 +1262,7 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     state.fontChanged = true;
     renderFont();
     say('fontMsg', '글씨가 [' + FONT_LABELS[n] + ']가 되었어요!', 'good');
+    if (courseDone(2)) doneSound();
     afterChange();
     return n;
   }
@@ -958,6 +1302,8 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
       var inp2 = $('typeInput'); if (inp2) inp2.value = '';
       renderType();
       pulse('typeTarget');
+      correctSound();
+      toast('👏 정답입니다!');
       if (done) { say('typeMsg', '세 문장을 모두 해냈어요! 정말 잘하셨습니다 👏', 'good'); }
       else { say('typeMsg', PRAISE[(state.typeIndex - 1) % PRAISE.length], 'good'); }
       afterChange();
@@ -987,6 +1333,7 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     renderSwitch();
     var msg = on ? d.on : d.off;
     say('swBig', msg, 'good');
+    if (courseDone(4)) doneSound();
     afterChange();
     return { id: id, name: d.name, on: on, msg: msg, done: courseDone(4) };
   }
@@ -1006,17 +1353,147 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
   }
 
   /* =====================================================
+     코스 5 : 기본 용어 카드
+     ===================================================== */
+  function buildTerms() {
+    var grid = $('termGrid');
+    if (!grid || !grid.appendChild || !document.createElement) return;
+    try { grid.innerHTML = ''; } catch (e) {}
+    for (var i = 0; i < TERMS.length; i++) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'tile term';
+      b.id = 'term-' + i;
+      if (b.setAttribute) b.setAttribute('data-i', String(i));
+      var ico = document.createElement('span');
+      ico.className = 'temoji';
+      if (ico.setAttribute) ico.setAttribute('aria-hidden', 'true');
+      ico.textContent = TERMS[i].ico;
+      var nm = document.createElement('span');
+      nm.className = 'tname';
+      nm.textContent = TERMS[i].name;
+      var st = document.createElement('span');
+      st.className = 'tstate';
+      st.id = 'termstate-' + i;
+      st.textContent = '눌러 보기';
+      b.appendChild(ico); b.appendChild(nm); b.appendChild(st);
+      grid.appendChild(b);
+    }
+  }
+  function selectTerm(i) {
+    if (i < 0 || i >= TERMS.length) return false;
+    state.termIndex = i;
+    state.termsSeen[TERMS[i].id] = true;
+    renderTerms();
+    if (soundOn) speak(TERMS[i].name);
+    afterChange();
+    return true;
+  }
+  function renderTerms() {
+    var seen = 0;
+    for (var i = 0; i < TERMS.length; i++) {
+      var on = !!state.termsSeen[TERMS[i].id];
+      if (on) seen++;
+      setCls('term-' + i, 'sel', state.termIndex === i);
+      setText('termstate-' + i, on ? '봤어요 ✅' : '눌러 보기');
+      var b = $('term-' + i);
+      if (b && b.setAttribute) b.setAttribute('aria-pressed', state.termIndex === i ? 'true' : 'false');
+    }
+    setText('termCount', TERMS.length + '개 중 ' + seen + '개 살펴봄');
+    var has = state.termIndex >= 0 && state.termIndex < TERMS.length;
+    if (has) {
+      setText('tdName', TERMS[state.termIndex].ico + ' ' + TERMS[state.termIndex].name);
+      setText('tdBody', TERMS[state.termIndex].body);
+    } else {
+      setText('tdName', '👆 낱말 카드를 눌러 보세요');
+      setText('tdBody', '궁금한 낱말을 누르면 쉬운 설명이 여기에 크게 나와요.');
+    }
+    setCls('termDetail', 'empty', !has);
+  }
+
+  /* =====================================================
+     코스 5 : 퀴즈 (정답 → 박수 + "정답입니다!")
+     ===================================================== */
+  function quizIndexNow() {
+    var i = state.quizIndex;
+    if (i < 0) i = 0;
+    if (i > QUIZ.length - 1) i = QUIZ.length - 1;
+    return i;
+  }
+  function renderQuiz() {
+    var qi = quizIndexNow();
+    var q = QUIZ[qi];
+    var solved = !!state.quizSolved[qi];
+    setText('quizNum', (qi + 1) + ' / ' + QUIZ.length);
+    setText('quizScore', quizSolvedCount() + '문제 맞힘');
+    setText('quizQ', q ? q.q : '문제를 준비하고 있어요.');
+    for (var i = 0; i < 3; i++) {
+      setText('otext-' + i, q ? q.opts[i] : '');
+      setCls('opt-' + i, 'right', !!(q && solved && i === q.a));
+      setCls('opt-' + i, 'wrong', !!(q && !solved && picked === i && i !== q.a));
+      var b = $('opt-' + i);
+      if (b && b.setAttribute) b.setAttribute('aria-pressed', (q && solved && i === q.a) ? 'true' : 'false');
+    }
+    var allSolved = quizSolvedCount() >= QUIZ.length;
+    setHidden('quizNext', !solved || allSolved);
+  }
+  function pickOption(i) {
+    var qi = quizIndexNow();
+    var q = QUIZ[qi];
+    if (!q || i < 0 || i > 2) return false;
+    if (state.quizSolved[qi]) {
+      say('quizMsg', '이미 맞히신 문제예요. [다음 문제]를 눌러 주세요.', 'good');
+      return false;
+    }
+    picked = i;
+    if (i === q.a) {
+      state.quizSolved[qi] = true;
+      picked = -1;
+      correctSound();
+      toast('👏 정답입니다!');
+      renderQuiz();
+      if (quizSolvedCount() >= QUIZ.length) {
+        say('quizMsg', '여섯 문제를 모두 맞히셨어요! 정말 대단합니다 🎉', 'good');
+      } else {
+        say('quizMsg', '정답입니다! ' + q.why, 'good');
+      }
+      afterChange();
+      return true;
+    }
+    renderQuiz();
+    say('quizMsg', '아까운데요. 다시 한 번 생각해 보세요. 정답은 하나뿐이에요.', 'warn');
+    return false;
+  }
+  function nextQuiz() {
+    var qi = quizIndexNow();
+    if (!state.quizSolved[qi]) {
+      say('quizMsg', '정답을 맞힌 뒤에 다음 문제로 갈 수 있어요.', 'warn');
+      return false;
+    }
+    if (qi >= QUIZ.length - 1) {
+      say('quizMsg', '마지막 문제까지 다 하셨어요. 다시 풀려면 [이 연습 다시 하기]를 눌러 주세요.', 'good');
+      return false;
+    }
+    state.quizIndex = qi + 1;
+    picked = -1;
+    renderQuiz();
+    say('quizMsg', (state.quizIndex + 1) + '번 문제예요. 보기 중에 알맞은 것을 눌러 주세요.', '');
+    afterChange();
+    return true;
+  }
+
+  /* =====================================================
      전체 렌더
      ===================================================== */
   function renderStamps() {
-    for (var i = 1; i <= 4; i++) { setCls('stamp-' + i, 'on', courseDone(i)); }
+    for (var i = 1; i <= 5; i++) { setCls('stamp-' + i, 'on', courseDone(i)); }
     var n = doneCount();
-    setText('ptext', '4개 중 ' + n + '개 완료');
-    var pf = $('pfill'); if (pf && pf.style) pf.style.width = (n * 25) + '%';
+    setText('ptext', '5개 중 ' + n + '개 완료');
+    var pf = $('pfill'); if (pf && pf.style) pf.style.width = (n * 20) + '%';
     return n;
   }
   function renderHome() {
-    for (var n = 1; n <= 4; n++) {
+    for (var n = 1; n <= 5; n++) {
       var ok = courseDone(n);
       setText('hc-' + n, ok ? '연습 완료 ✅' : '아직이에요');
       setCls('hc-' + n, 'done', ok);
@@ -1026,9 +1503,12 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     var all = allDone();
     setHidden('allDone', !all);
     var el = $('allDone');
-    if (all && !wasAll && el && el.classList) {
-      el.classList.remove('pop');
-      el.classList.add('pop');
+    if (all && !wasAll) {
+      if (el && el.classList) {
+        el.classList.remove('pop');
+        el.classList.add('pop');
+      }
+      if (!booting) { bigDoneSound(); toast('🎉 모두 해냈어요!'); }
     }
     wasAll = all;
   }
@@ -1041,6 +1521,7 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
   }
   function renderAll() {
     renderTap(); renderHold(); renderSwipe(); renderFont(); renderType(); renderSwitch();
+    renderTerms(); renderQuiz();
     renderStamps(); renderHome(); renderBanner(); renderNav();
   }
 
@@ -1068,6 +1549,10 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     } else if (n === 4) {
       state.tried = {}; state.swOn = {};
       say('swBig', '아이콘을 눌러 보세요.', '');
+    } else if (n === 5) {
+      state.termsSeen = {}; state.termIndex = -1;
+      state.quizIndex = 0; state.quizSolved = freshQuizFlags(); picked = -1;
+      say('quizMsg', '보기 세 개 중에 알맞은 것을 눌러 주세요.', '');
     }
     renderAll();
     afterChange();
@@ -1082,6 +1567,8 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     state.fontStep = 1; state.fontChanged = false;
     state.typeIndex = 0;
     state.tried = {}; state.swOn = {};
+    state.termsSeen = {}; state.termIndex = -1;
+    state.quizIndex = 0; state.quizSolved = freshQuizFlags(); picked = -1;
     var inp = $('typeInput'); if (inp) inp.value = '';
     say('tapMsg', '그림을 손가락으로 가볍게 눌러 보세요.', '');
     say('holdMsg', '손가락을 대고 있으면 동그라미가 차올라요.', '');
@@ -1089,6 +1576,7 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     say('fontMsg', '[＋ 크게]를 눌러 글씨를 키워 보세요.', '');
     say('typeMsg', '입력창을 누르면 글자를 쓸 수 있어요.', '');
     say('swBig', '아이콘을 눌러 보세요.', '');
+    say('quizMsg', '보기 세 개 중에 알맞은 것을 눌러 주세요.', '');
     setHidden('micPanel', true);
     renderAll();
     afterChange();
@@ -1184,7 +1672,25 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
 
   function wire() {
     var i;
-    for (i = 1; i <= 4; i++) {
+    on('soundBtn', 'click', function () { toggleSound(); });
+    on('quizNext', 'click', function () { nextQuiz(); });
+    on('opt-0', 'click', function () { pickOption(0); });
+    on('opt-1', 'click', function () { pickOption(1); });
+    on('opt-2', 'click', function () { pickOption(2); });
+    var grid = $('termGrid');
+    if (grid && grid.addEventListener) {
+      grid.addEventListener('click', function (e) {
+        var t = e && e.target;
+        while (t && t !== grid) {
+          if (t.getAttribute && t.getAttribute('data-i') !== null) {
+            selectTerm(parseInt(t.getAttribute('data-i'), 10));
+            return;
+          }
+          t = t.parentNode;
+        }
+      });
+    }
+    for (i = 1; i <= 5; i++) {
       (function (n) {
         on('start-' + n, 'click', function () { goScreen(String(n)); });
         on('back-' + n, 'click', function () { goScreen('home'); });
@@ -1234,10 +1740,13 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
      시작
      ===================================================== */
   function init() {
+    buildTerms();
     restore(savedRaw());
     wire();
+    renderSound();
     renderAll();
     goScreen('home');
+    booting = false;
   }
 
   init();
@@ -1253,6 +1762,8 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     SENTENCES: SENTENCES,
     CARDS: CARDS,
     SWITCHES: SWITCHES,
+    TERMS: TERMS,
+    QUIZ: QUIZ,
     courseDone: courseDone,
     doneCount: doneCount,
     allDone: allDone,
@@ -1271,6 +1782,18 @@ h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-sp
     resetCourse: resetCourse,
     resetAll: resetAll,
     goScreen: goScreen,
+    selectTerm: selectTerm,
+    renderTerms: renderTerms,
+    pickOption: pickOption,
+    nextQuiz: nextQuiz,
+    quizSolvedCount: quizSolvedCount,
+    applause: applause,
+    speak: speak,
+    correctSound: correctSound,
+    setSound: setSound,
+    toggleSound: toggleSound,
+    soundOn: function () { return soundOn; },
+    audioState: function () { return audioCtx ? audioCtx.state : 'none'; },
     snapshot: snapshot,
     restore: restore,
     savedRaw: savedRaw,
