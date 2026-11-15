@@ -1,0 +1,1282 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>시니어 스마트폰 기초연습장 · 부산스마트IT봉사단</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#1E3A8A" />
+<meta name="color-scheme" content="light" />
+<meta name="description" content="어르신을 위한 스마트폰 기초연습장 - 톡 누르기, 꾹 누르기, 옆으로 밀기, 글씨 키우기, 글자 입력, 아이콘 스위치를 마음껏 연습하세요." />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="스마트폰 연습장" />
+<meta name="application-name" content="스마트폰 연습장" />
+<meta name="format-detection" content="telephone=no" />
+<style>
+:root{
+  color-scheme:light;
+  --navy:#1E3A8A; --navy-2:#2B4AA5; --navy-ink:#152A63;
+  --gold:#F59E0B; --gold-2:#FCD34D; --gold-ink:#3B2600;
+  --cream:#FFFBEB; --bg:#F8FAFC; --card:#FFFFFF;
+  --line:#DCE3F0; --ink:#111827; --muted:#4B5563;
+  --green:#15803D; --green-bg:#E9F7EE; --amber:#B45309; --red:#B91C1C;
+  --shadow:0 1px 2px rgba(20,35,80,.06), 0 6px 18px rgba(20,35,80,.07);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; padding:0 0 calc(104px + env(safe-area-inset-bottom,0px));
+  background:linear-gradient(180deg,#FFFBEB 0%,#F8FAFC 300px,#F1F5F9 100%);
+  color:var(--ink); font-size:18px; line-height:1.62;
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Noto Sans CJK KR","Malgun Gothic","맑은 고딕",sans-serif;
+  -webkit-tap-highlight-color:transparent; word-break:keep-all;
+}
+button,input{font-family:inherit}
+button{cursor:pointer;color:var(--ink);touch-action:manipulation}
+button:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* ---------- 상단 ---------- */
+.hero{
+  position:relative; color:#fff; padding:14px 16px 16px;
+  background:linear-gradient(165deg,#1E3A8A 0%,#27448F 62%,#2B4AA5 100%);
+}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--gold-2),var(--gold))}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .mark{
+  width:38px;height:38px;flex:0 0 38px;border-radius:12px;background:var(--gold);
+  color:var(--navy-ink);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px;line-height:1;
+}
+.brand h1{margin:0;font-size:24px;font-weight:900;letter-spacing:-.5px;line-height:1.25}
+.brand p{margin:2px 0 0;font-size:14px;color:rgba(255,255,255,.86);font-weight:700}
+.reassure{
+  margin:12px 0 10px; padding:12px 10px; border-radius:14px;
+  background:var(--gold); color:var(--gold-ink);
+  font-size:20px; font-weight:900; text-align:center; letter-spacing:-.3px;
+  box-shadow:0 3px 0 rgba(0,0,0,.14);
+}
+.stamprow{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.stamp{
+  min-height:64px; padding:6px 2px; border-radius:12px; text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+  background:rgba(255,255,255,.13); border:1.5px dashed rgba(255,255,255,.4);
+}
+.stamp .si{font-size:20px;line-height:1.1;filter:grayscale(1);opacity:.75}
+.stamp .sl{font-size:12.5px;font-weight:900;color:rgba(255,255,255,.92)}
+.stamp.on{background:#FFF7E6;border:2px solid var(--gold)}
+.stamp.on .si{filter:none;opacity:1}
+.stamp.on .sl{color:var(--navy-ink)}
+.pbar{height:12px;border-radius:99px;background:rgba(255,255,255,.25);margin:9px 0 4px;overflow:hidden}
+.pfill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold-2));transition:width .35s}
+.ptext{margin:0;text-align:center;font-size:14px;font-weight:900;color:rgba(255,255,255,.94)}
+
+/* ---------- 축하 배너 ---------- */
+.celebrate{
+  width:calc(100% - 28px); max-width:680px; margin:14px auto 0; padding:16px; border-radius:20px;
+  background:linear-gradient(160deg,#15803D,#16A34A); color:#fff; text-align:center;
+  box-shadow:0 8px 24px rgba(21,128,61,.3); animation:pop .55s ease-out;
+}
+@keyframes pop{0%{transform:scale(.92);opacity:0}60%{transform:scale(1.02)}100%{transform:scale(1);opacity:1}}
+.celebrate.pop{animation:pop .55s ease-out}
+.cel-title{margin:0 0 6px;font-size:24px;font-weight:900;line-height:1.35}
+.cel-sub{margin:0 0 12px;font-size:17px;font-weight:700;color:rgba(255,255,255,.95)}
+
+/* ---------- 본문 ---------- */
+main{padding:16px 14px 8px;max-width:680px;margin:0 auto}
+.screen{display:none}
+.screen.on{display:block;animation:fadeIn .26s ease-out}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h2.q{font-size:24px;font-weight:900;color:var(--navy);margin:4px 0 4px;letter-spacing:-.4px}
+.sub{margin:0 0 14px;font-size:17px;color:var(--muted);font-weight:700}
+.sub b{color:var(--amber)}
+
+/* 홈 카드 */
+.course{
+  width:100%; display:flex; align-items:center; gap:12px; text-align:left;
+  background:var(--card); border:2px solid var(--line); border-radius:18px;
+  padding:14px; margin:0 0 12px; min-height:108px; box-shadow:var(--shadow);
+}
+.course:active{border-color:var(--gold);background:var(--cream)}
+.cnum{
+  width:46px;height:46px;flex:0 0 46px;border-radius:50%;background:var(--navy);color:#fff;
+  font-size:22px;font-weight:900;display:flex;align-items:center;justify-content:center;
+}
+.ctext{flex:1;display:flex;flex-direction:column;gap:2px;min-width:0}
+.ctitle{font-size:22px;font-weight:900;color:var(--navy);letter-spacing:-.4px;line-height:1.3}
+.cdesc{font-size:16px;color:var(--muted);font-weight:700}
+.cstate{font-size:14px;font-weight:900;color:#7C879D;margin-top:2px}
+.cstate.done{color:var(--green)}
+.carrow{font-size:32px;line-height:1;color:var(--gold);font-weight:900}
+.hint-card{
+  background:var(--cream); border:2px solid #F6E3B4; border-radius:16px; padding:12px 14px;
+  font-size:16.5px; font-weight:700; color:#7C4A03; margin:16px 0 12px;
+}
+
+/* 공통 버튼 */
+.btn{
+  appearance:none;border:0;border-radius:16px;font-size:19px;font-weight:900;
+  min-height:56px;width:100%;display:flex;align-items:center;justify-content:center;gap:6px;
+  padding:6px 14px;line-height:1.3;
+}
+.btn-gold{background:var(--gold);color:var(--gold-ink);box-shadow:0 3px 0 #C2760A}
+.btn-gold:active{transform:translateY(2px);box-shadow:0 1px 0 #C2760A}
+.btn-soft{background:#fff;color:var(--navy);border:2px solid #C7D2E8}
+.btn-soft:active{background:#EEF2FA}
+.btn-primary{background:var(--navy);color:#fff}
+.btn[disabled]{opacity:.55}
+
+/* 패널 */
+.panel{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:14px;margin:0 0 14px;box-shadow:var(--shadow)}
+.panel.cream{background:var(--cream);border-color:#F6E3B4}
+.step{font-size:18px;font-weight:900;margin:0 0 12px;color:var(--navy);line-height:1.5}
+.step b{color:var(--amber)}
+.step .small{font-size:15px;font-weight:800;color:var(--muted)}
+.center{text-align:center}
+.msg{margin:10px 0 0;font-size:17px;font-weight:800;color:var(--muted);text-align:center;line-height:1.5}
+.msg.good{color:var(--green)}
+.msg.warn{color:var(--amber)}
+.counter{margin:8px 0 0;text-align:center;font-size:20px;font-weight:900;color:var(--navy);font-variant-numeric:tabular-nums}
+.done-note{
+  margin:0 0 14px;padding:14px;border-radius:16px;background:var(--green-bg);
+  border:2px solid #A7DFC0;color:var(--green);font-size:17px;font-weight:900;text-align:center;
+}
+.row{display:flex;gap:10px;margin:10px 0 0}
+.row > .btn{flex:1;min-width:0}
+
+/* 칭찬 효과 */
+.pulse{animation:pulse .55s ease-out}
+@keyframes pulse{0%{transform:scale(1)}35%{transform:scale(1.06)}70%{transform:scale(.99)}100%{transform:scale(1)}}
+
+/* 코스 머리 */
+.chead{display:flex;align-items:center;gap:10px;margin:0 0 12px;flex-wrap:wrap}
+.back{
+  min-height:56px;border-radius:14px;border:2px solid #C7D2E8;background:#fff;color:var(--navy);
+  font-size:16px;font-weight:900;padding:6px 14px;
+}
+.chead h2{margin:0;font-size:22px;font-weight:900;color:var(--navy);letter-spacing:-.4px;line-height:1.3}
+
+/* 코스 1 - 톡 */
+.tapbtn{
+  display:flex;align-items:center;justify-content:center;width:100%;min-height:186px;
+  border-radius:24px;border:3px dashed #CBD5E1;padding:16px;touch-action:manipulation;
+  background:linear-gradient(180deg,#FFFBEB,#FFFFFF);
+}
+.tapbtn:active{background:#FEF3C7;border-color:var(--gold)}
+.tapbtn.done{border-style:solid;border-color:var(--gold);background:var(--cream)}
+.tapico{display:none;pointer-events:none}
+.tapico.show{display:block}
+.tapico svg{width:116px;height:116px;display:block}
+.ic-apple{color:var(--red)}
+.ic-sun{color:#D97706}
+.ic-heart{color:#DB2777}
+
+/* 코스 1 - 꾹 */
+.holdbtn{
+  position:relative;display:block;width:190px;height:190px;min-height:190px;
+  margin:8px auto 0;padding:0;border:0;background:none;touch-action:none;
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
+}
+.ring{position:absolute;left:0;top:0;width:100%;height:100%;transform:rotate(-90deg)}
+.ringbg{fill:#FFF7E6;stroke:#FDE68A;stroke-width:14}
+.ringfg{
+  fill:none;stroke:var(--gold);stroke-width:14;stroke-linecap:round;
+  stroke-dasharray:528;stroke-dashoffset:528;transition:stroke-dashoffset .06s linear;
+}
+.holdbtn.done .ringfg{stroke:var(--green)}
+.holdlabel{
+  position:absolute;left:0;top:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  font-size:46px;font-weight:900;color:var(--navy);pointer-events:none;
+}
+.holdpct{margin:8px 0 0;text-align:center;font-size:22px;font-weight:900;color:var(--navy);font-variant-numeric:tabular-nums}
+
+/* 코스 2 - 카드 */
+.stage{
+  position:relative;overflow:hidden;border-radius:18px;border:2px solid var(--line);
+  background:var(--cream);touch-action:pan-y;margin:0 0 10px;
+}
+.track{display:flex;transition:transform .3s ease;will-change:transform}
+.slide{
+  flex:0 0 100%;min-width:0;padding:20px 16px;min-height:208px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;
+}
+.slide .semoji{font-size:48px;line-height:1}
+.slide h3{margin:0;font-size:22px;font-weight:900;color:var(--navy);letter-spacing:-.3px}
+.slide p{margin:0;font-size:18px;font-weight:700;color:var(--muted)}
+.dots{display:flex;justify-content:center;align-items:center;gap:8px;margin:0 0 6px}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:#CBD5E1}
+.dot.on{width:28px;border-radius:99px;background:var(--gold)}
+
+/* 코스 2 - 글씨 크기 */
+.fontbox{background:var(--cream);border:2px dashed #F3D9A4;border-radius:14px;padding:14px;margin:0 0 10px}
+.fsample{margin:0;font-size:22px;line-height:1.55;font-weight:800;color:var(--ink);transition:font-size .18s}
+
+/* 코스 3 - 입력 */
+.target{
+  margin:0 0 14px;padding:16px 12px;border-radius:14px;background:#EFF4FF;border:2px solid #C7D2E8;
+  color:var(--navy);font-size:26px;font-weight:900;text-align:center;letter-spacing:.5px;line-height:1.4;
+}
+.target.done{background:var(--green-bg);border-color:#A7DFC0;color:var(--green);font-size:22px}
+.lbl{display:block;font-size:16px;font-weight:900;color:var(--muted);margin:0 0 6px}
+.typing{
+  width:100%;min-height:66px;border-radius:14px;border:2.5px solid #C7D2E8;background:#fff;
+  font-size:24px;font-weight:900;color:var(--ink);padding:10px 14px;text-align:center;
+}
+.typing:focus{outline:3px solid var(--gold);border-color:var(--gold)}
+.tip{margin:12px 0 0;padding:12px 14px;border-radius:14px;background:var(--cream);border:2px solid #F6E3B4}
+.tip p{margin:0 0 8px;font-size:16.5px;font-weight:700;color:#7C4A03;line-height:1.55}
+.tip p:last-child{margin:0}
+.tip b{color:var(--navy)}
+
+/* 코스 4 - 아이콘 스위치 */
+.swbig{
+  display:flex;align-items:center;justify-content:center;text-align:center;min-height:76px;
+  margin:0 0 14px;padding:12px 14px;border-radius:16px;background:#EFF4FF;border:2px solid #C7D2E8;
+  color:var(--navy);font-size:20px;font-weight:900;line-height:1.45;
+}
+.swbig.good{background:var(--green-bg);border-color:#A7DFC0;color:var(--green)}
+.swgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.tile{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  min-height:116px;border-radius:16px;border:2.5px solid var(--line);background:#fff;
+  padding:10px 6px;color:#64748B;
+}
+.tile:active{transform:translateY(2px)}
+.tile svg{width:34px;height:34px;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tile .tname{font-size:17px;font-weight:900;color:var(--navy);line-height:1.25}
+.tile .tstate{font-size:14px;font-weight:900;color:#7C879D}
+.tile.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.tile.on .tname{color:#fff}
+.tile.on .tstate{color:var(--gold-2)}
+
+/* 하단 이동 */
+.bottomnav{
+  position:fixed;left:0;right:0;bottom:0;z-index:40;display:flex;gap:8px;
+  padding:8px 10px calc(8px + env(safe-area-inset-bottom,0px));
+  background:rgba(255,255,255,.98);border-top:2px solid var(--line);
+  box-shadow:0 -6px 18px rgba(20,35,80,.09);
+}
+.navbtn{
+  flex:1;min-width:0;min-height:56px;border-radius:14px;border:2px solid var(--line);background:#fff;
+  font-size:16px;font-weight:900;color:var(--navy);display:flex;align-items:center;justify-content:center;
+  padding:4px 6px;line-height:1.2;
+}
+.navbtn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+.navbtn.gold{background:var(--gold);color:var(--gold-ink);border-color:#D97706}
+.noscript{margin:16px 14px;padding:14px;border-radius:14px;background:#FDECEC;color:var(--red);font-weight:900;text-align:center}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="brand">
+    <div class="mark" aria-hidden="true">스</div>
+    <div>
+      <h1>스마트폰 기초연습장</h1>
+      <p>부산스마트IT봉사단 · 어르신 스마트폰 교실</p>
+    </div>
+  </div>
+  <p class="reassure">아무리 눌러도 고장 나지 않아요 😊</p>
+  <div class="stamprow" role="list" aria-label="연습 완료 스탬프">
+    <div class="stamp" id="stamp-1"><span class="si" aria-hidden="true">👆</span><span class="sl">톡·꾹</span></div>
+    <div class="stamp" id="stamp-2"><span class="si" aria-hidden="true">👉</span><span class="sl">밀기</span></div>
+    <div class="stamp" id="stamp-3"><span class="si" aria-hidden="true">⌨️</span><span class="sl">입력</span></div>
+    <div class="stamp" id="stamp-4"><span class="si" aria-hidden="true">🔆</span><span class="sl">아이콘</span></div>
+  </div>
+  <div class="pbar" aria-hidden="true"><div class="pfill" id="pfill"></div></div>
+  <p class="ptext" id="ptext">4개 중 0개 완료</p>
+</header>
+
+<div class="celebrate" id="allDone" role="status" aria-live="polite" hidden>
+  <p class="cel-title">축하합니다! 스마트폰 기초 연습 완료 🎉</p>
+  <p class="cel-sub">네 가지 연습을 모두 해내셨어요. 정말 대단합니다!</p>
+  <button class="btn btn-soft" id="allDoneBtn" type="button">처음부터 다시 연습하기</button>
+</div>
+
+<noscript><p class="noscript">이 연습장은 화면을 눌러 쓰는 연습장이에요. 인터넷 브라우저의 '자바스크립트'를 켜 주세요.</p></noscript>
+
+<main>
+
+  <!-- ============ 홈 ============ -->
+  <section class="screen on" id="screen-home" aria-label="연습 고르기">
+    <h2 class="q">무엇을 연습해 볼까요?</h2>
+    <p class="sub">하고 싶은 연습의 <b>큰 카드</b>를 손가락으로 눌러 주세요.</p>
+
+    <button class="course" id="start-1" type="button">
+      <span class="cnum">1</span>
+      <span class="ctext">
+        <span class="ctitle">톡 누르기 &amp; 꾹 누르기</span>
+        <span class="cdesc">가볍게 톡, 그리고 1초 동안 꾹</span>
+        <span class="cstate" id="hc-1">아직이에요</span>
+      </span>
+      <span class="carrow" aria-hidden="true">›</span>
+    </button>
+
+    <button class="course" id="start-2" type="button">
+      <span class="cnum">2</span>
+      <span class="ctext">
+        <span class="ctitle">옆으로 밀기 &amp; 글씨 키우기</span>
+        <span class="cdesc">카드를 밀어 넘기고, 글씨를 크게</span>
+        <span class="cstate" id="hc-2">아직이에요</span>
+      </span>
+      <span class="carrow" aria-hidden="true">›</span>
+    </button>
+
+    <button class="course" id="start-3" type="button">
+      <span class="cnum">3</span>
+      <span class="ctext">
+        <span class="ctitle">글자 입력 연습</span>
+        <span class="cdesc">보고 그대로 따라 써 보기</span>
+        <span class="cstate" id="hc-3">아직이에요</span>
+      </span>
+      <span class="carrow" aria-hidden="true">›</span>
+    </button>
+
+    <button class="course" id="start-4" type="button">
+      <span class="cnum">4</span>
+      <span class="ctext">
+        <span class="ctitle">자주 쓰는 아이콘 스위치</span>
+        <span class="cdesc">와이파이·손전등 켜고 끄기</span>
+        <span class="cstate" id="hc-4">아직이에요</span>
+      </span>
+      <span class="carrow" aria-hidden="true">›</span>
+    </button>
+
+    <p class="hint-card">💡 이 연습장은 인터넷이 없어도 열려요. 무엇을 잘못 눌러도 아무 일도 일어나지 않으니 마음껏 눌러 보세요.</p>
+    <button class="btn btn-soft" id="resetAll" type="button">모두 지우고 처음부터</button>
+  </section>
+
+  <!-- ============ 코스 1 ============ -->
+  <section class="screen" id="screen-1" aria-label="톡 누르기와 꾹 누르기">
+    <div class="chead">
+      <button class="back" id="back-1" type="button">← 처음 화면</button>
+      <h2>톡 누르기 &amp; 꾹 누르기</h2>
+    </div>
+
+    <div class="panel">
+      <p class="step">① 그림을 <b>가볍게 톡</b> 눌러 보세요. <span class="small">(5번 누르면 완성)</span></p>
+      <button class="tapbtn" id="tapBtn" type="button" aria-label="큰 그림을 가볍게 누르는 연습 버튼">
+        <span class="tapico show ic-apple" id="tapIcon-0" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 7.6C10.7 5.7 8.1 5 6.2 6.4 3.9 8.1 4.6 12.2 6.8 15.3c1.2 1.6 2.4 2.6 3.5 2.6.7 0 1.1-.3 1.7-.3s1 .3 1.7.3c1.1 0 2.3-1 3.5-2.6 2.2-3.1 2.9-7.2.6-8.9-1.9-1.4-4.5-.7-5.8 1.2z"/><path d="M12 7.6c0-1.7.7-3.4 2.3-4.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        </span>
+        <span class="tapico ic-sun" id="tapIcon-1" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="4.9" r="2.5"/><circle cx="12" cy="19.1" r="2.5"/>
+            <circle cx="4.9" cy="12" r="2.5"/><circle cx="19.1" cy="12" r="2.5"/>
+            <circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="7" r="2.5"/>
+            <circle cx="7" cy="17" r="2.5"/><circle cx="17" cy="17" r="2.5"/>
+            <circle cx="12" cy="12" r="3.6" fill="#7C2D12"/>
+          </svg>
+        </span>
+        <span class="tapico ic-heart" id="tapIcon-2" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20.6s-7.9-4.9-7.9-9.9A4.7 4.7 0 0 1 12 8.1a4.7 4.7 0 0 1 7.9 2.6c0 5-7.9 9.9-7.9 9.9z"/></svg>
+        </span>
+      </button>
+      <p class="counter" id="tapCount">0 / 5</p>
+      <p class="msg" id="tapMsg" aria-live="polite">그림을 손가락으로 가볍게 눌러 보세요.</p>
+    </div>
+
+    <div class="panel">
+      <p class="step">② 동그란 버튼을 <b>1초 동안 꾹</b> 눌러 보세요.</p>
+      <button class="holdbtn" id="holdBtn" type="button" aria-label="꾹 누르기 연습 버튼">
+        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+          <circle class="ringbg" cx="100" cy="100" r="84"></circle>
+          <circle class="ringfg" id="holdRing" cx="100" cy="100" r="84"></circle>
+        </svg>
+        <span class="holdlabel">꾹</span>
+      </button>
+      <p class="holdpct" id="holdPct">0%</p>
+      <p class="msg" id="holdMsg" aria-live="polite">손가락을 대고 있으면 동그라미가 차올라요.</p>
+    </div>
+
+    <p class="done-note" id="c1Note" hidden>이 코스를 다 하셨어요! 다음 연습도 해 볼까요? 👏</p>
+    <button class="btn btn-soft" id="reset-1" type="button">이 연습 다시 하기</button>
+  </section>
+
+  <!-- ============ 코스 2 ============ -->
+  <section class="screen" id="screen-2" aria-label="옆으로 밀기와 글씨 키우기">
+    <div class="chead">
+      <button class="back" id="back-2" type="button">← 처음 화면</button>
+      <h2>옆으로 밀기 &amp; 글씨 키우기</h2>
+    </div>
+
+    <div class="panel">
+      <p class="step">① 카드를 <b>손가락으로 옆으로 밀어</b> 넘겨 보세요.</p>
+      <div class="stage" id="stage">
+        <div class="track" id="track">
+          <div class="slide" id="slide-0">
+            <span class="semoji" aria-hidden="true">☀️</span>
+            <h3>아침에 일어나면</h3>
+            <p>창문을 열고 따뜻한 햇볕을 쬐어 보세요.</p>
+          </div>
+          <div class="slide" id="slide-1">
+            <span class="semoji" aria-hidden="true">🍵</span>
+            <h3>따뜻한 차 한 잔</h3>
+            <p>천천히 마시면 몸과 마음이 편안해져요.</p>
+          </div>
+          <div class="slide" id="slide-2">
+            <span class="semoji" aria-hidden="true">🌷</span>
+            <h3>오늘의 꽃</h3>
+            <p>산책길에 만난 꽃을 사진으로 남겨 보세요.</p>
+          </div>
+          <div class="slide" id="slide-3">
+            <span class="semoji" aria-hidden="true">🎶</span>
+            <h3>좋아하는 노래</h3>
+            <p>옛날 노래를 들으며 함께 흥얼거려 보세요.</p>
+          </div>
+        </div>
+      </div>
+      <div class="dots" aria-hidden="true">
+        <span class="dot on" id="d-0"></span>
+        <span class="dot" id="d-1"></span>
+        <span class="dot" id="d-2"></span>
+        <span class="dot" id="d-3"></span>
+      </div>
+      <p class="counter" id="cardCount">1 / 4</p>
+      <div class="row">
+        <button class="btn btn-soft" id="prevCard" type="button">← 이전 카드</button>
+        <button class="btn btn-soft" id="nextCard" type="button">다음 카드 →</button>
+      </div>
+      <p class="msg" id="swipeMsg" aria-live="polite">카드 위에서 손가락을 왼쪽으로 쓱 밀어 보세요.</p>
+    </div>
+
+    <div class="panel">
+      <p class="step">② <b>＋ 크게</b> 버튼으로 글씨를 키워 보세요.</p>
+      <div class="fontbox"><p class="fsample" id="fontSample">오늘 부산은 맑고 따뜻합니다. 이 글씨가 잘 보이나요?</p></div>
+      <p class="counter" id="fontLabel">보통 크기</p>
+      <div class="row">
+        <button class="btn btn-soft" id="fontDown" type="button">－ 작게</button>
+        <button class="btn btn-gold" id="fontUp" type="button">＋ 크게</button>
+      </div>
+      <p class="msg" id="fontMsg" aria-live="polite">[＋ 크게]를 눌러 글씨를 키워 보세요.</p>
+    </div>
+
+    <button class="btn btn-soft" id="reset-2" type="button">이 연습 다시 하기</button>
+  </section>
+
+  <!-- ============ 코스 3 ============ -->
+  <section class="screen" id="screen-3" aria-label="글자 입력 연습">
+    <div class="chead">
+      <button class="back" id="back-3" type="button">← 처음 화면</button>
+      <h2>글자 입력 연습</h2>
+    </div>
+
+    <div class="panel">
+      <p class="step">아래 문장을 <b>그대로 따라 써 보세요.</b></p>
+      <p class="target" id="typeTarget">안녕하세요</p>
+      <label class="lbl" for="typeInput">여기에 써 보세요</label>
+      <input class="typing" id="typeInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="눌러서 글자를 써 보세요" />
+      <p class="counter" id="typeCount">1 / 3</p>
+      <div class="row">
+        <button class="btn btn-gold" id="typeCheck" type="button">확인</button>
+        <button class="btn btn-soft" id="typeClear" type="button">지우기</button>
+      </div>
+      <p class="msg" id="typeMsg" aria-live="polite">입력창을 누르면 글자를 쓸 수 있어요.</p>
+    </div>
+
+    <div class="panel cream">
+      <button class="btn btn-soft" id="micTip" type="button">🎤 말로 입력하는 방법 보기</button>
+      <div class="tip" id="micPanel" hidden>
+        <p>① 입력창을 눌러 글자가 써질 자리를 만들어요.</p>
+        <p>② 키보드 <b>오른쪽 아래 마이크 모양</b>을 눌러요.</p>
+        <p>③ “안녕하세요”처럼 <b>또박또박</b> 말하면 글이 그대로 적혀요.</p>
+        <p>④ 안 되면 휴대폰 설정에서 마이크 사용을 허락해 주세요.</p>
+      </div>
+    </div>
+
+    <button class="btn btn-soft" id="reset-3" type="button">이 연습 다시 하기</button>
+  </section>
+
+  <!-- ============ 코스 4 ============ -->
+  <section class="screen" id="screen-4" aria-label="아이콘 스위치 연습">
+    <div class="chead">
+      <button class="back" id="back-4" type="button">← 처음 화면</button>
+      <h2>자주 쓰는 아이콘 스위치</h2>
+    </div>
+
+    <p class="step center">아이콘을 눌러 <b>켰다 껐다</b> 해 보세요.<br /><span class="small">진짜 스마트폰 위쪽을 내리면 나오는 화면과 비슷해요.</span></p>
+    <p class="swbig" id="swBig" aria-live="polite">아이콘을 눌러 보세요.</p>
+
+    <div class="swgrid">
+      <button class="tile" id="tile-wifi" type="button">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2.5 8.5a15 15 0 0 1 19 0"/><path d="M6 12.2a10 10 0 0 1 12 0"/><path d="M9.3 15.9a5 5 0 0 1 5.4 0"/><circle cx="12" cy="19.3" r="1.2" fill="currentColor" stroke="none"/></svg>
+        <span class="tname">와이파이</span><span class="tstate" id="state-wifi">꺼짐</span>
+      </button>
+      <button class="tile" id="tile-sound" type="button">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 5 6.5 9H3v6h3.5L11 19z"/><path d="M15.4 9.2a4 4 0 0 1 0 5.6"/><path d="M18.2 6.4a8 8 0 0 1 0 11.2"/></svg>
+        <span class="tname">소리</span><span class="tstate" id="state-sound">꺼짐</span>
+      </button>
+      <button class="tile" id="tile-flash" type="button">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 3h6v4.4l-2.2 3.2V21h-1.6V10.6L9 7.4z" fill="currentColor" stroke="none"/><path d="M8.5 3.6h7"/></svg>
+        <span class="tname">손전등</span><span class="tstate" id="state-flash">꺼짐</span>
+      </button>
+      <button class="tile" id="tile-bright" type="button">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.2v2M12 19.8v2M2.2 12h2M19.8 12h2M5 5l1.4 1.4M17.6 17.6 19 19M19 5l-1.4 1.4M6.4 17.6 5 19"/></svg>
+        <span class="tname">화면 밝기</span><span class="tstate" id="state-bright">꺼짐</span>
+      </button>
+      <button class="tile" id="tile-bt" type="button">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7.5 7.5 16 16.5 12 20V4l4 3.5L7.5 16.5"/></svg>
+        <span class="tname">블루투스</span><span class="tstate" id="state-bt">꺼짐</span>
+      </button>
+      <button class="tile" id="tile-alarm" type="button">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="13.2" r="7.6"/><path d="M12 9.4v3.9l2.8 1.9"/><path d="M5 4.2 3 6.3"/><path d="M19 4.2 21 6.3"/></svg>
+        <span class="tname">알람</span><span class="tstate" id="state-alarm">꺼짐</span>
+      </button>
+      <button class="tile" id="tile-moon" type="button">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 13.4A8.6 8.6 0 1 1 10.6 3.5a6.9 6.9 0 0 0 9.9 9.9z"/></svg>
+        <span class="tname">방해 금지</span><span class="tstate" id="state-moon">꺼짐</span>
+      </button>
+      <button class="tile" id="tile-air" type="button">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2.6c.9 0 1.6.9 1.6 2v4.2l7.4 4.2v2.1l-7.4-2.3v3.6l2.6 1.8v1.9L12 19.3l-4.2 1.7v-1.9l2.6-1.8v-3.6L3 16.1v-2.1l7.4-4.2V4.6c0-1.1.7-2 1.6-2z" fill="currentColor" stroke="none"/></svg>
+        <span class="tname">비행기 모드</span><span class="tstate" id="state-air">꺼짐</span>
+      </button>
+    </div>
+    <p class="counter" id="swCount">8개 중 0개 눌러 봄</p>
+    <button class="btn btn-soft" id="reset-4" type="button">이 연습 다시 하기</button>
+  </section>
+
+</main>
+
+<nav class="bottomnav" id="bottomnav" aria-label="연습 이동" hidden>
+  <button class="navbtn" id="navPrev" type="button">← 이전</button>
+  <button class="navbtn primary" id="navHome" type="button">🏠 처음</button>
+  <button class="navbtn gold" id="navNext" type="button">다음 →</button>
+</nav>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =====================================================
+     상수
+     ===================================================== */
+  var STORE_KEY = 'bsit_smartphone_practice_v1';
+  var TAP_GOAL = 5;
+  var HOLD_MS = 1000;
+  var SWIPE_MIN = 40;
+  var FONT_SIZES = [18, 22, 28, 36];
+  var FONT_LABELS = ['작은 글씨', '보통 크기', '큰 글씨', '아주 큰 글씨'];
+  var SENTENCES = ['안녕하세요', '오늘도 행복하세요', '스마트폰 참 쉽네요'];
+  var PRAISE = ['정확해요! 잘하셨어요 👏', '멋져요! 다음 문장도 해 볼까요?', '글씨가 아주 반듯해요 👍'];
+  var CARDS = [
+    { emoji: '☀️', title: '아침에 일어나면', body: '창문을 열고 따뜻한 햇볕을 쬐어 보세요.' },
+    { emoji: '🍵', title: '따뜻한 차 한 잔', body: '천천히 마시면 몸과 마음이 편안해져요.' },
+    { emoji: '🌷', title: '오늘의 꽃', body: '산책길에 만난 꽃을 사진으로 남겨 보세요.' },
+    { emoji: '🎶', title: '좋아하는 노래', body: '옛날 노래를 들으며 함께 흥얼거려 보세요.' }
+  ];
+  var SWITCHES = [
+    { id: 'wifi', name: '와이파이',
+      on: '와이파이가 켜졌어요! 이제 무료 인터넷을 쓸 수 있어요.',
+      off: '와이파이를 껐어요. 인터넷을 쓰려면 다시 켜 주세요.' },
+    { id: 'sound', name: '소리',
+      on: '소리가 켜졌어요! 전화가 오면 벨이 울려요.',
+      off: '소리를 껐어요. 무음이라 벨이 울리지 않아요.' },
+    { id: 'flash', name: '손전등',
+      on: '손전등이 켜졌어요! 어두운 밤길이 환해져요.',
+      off: '손전등을 껐어요. 배터리를 아낄 수 있어요.' },
+    { id: 'bright', name: '화면 밝기',
+      on: '화면이 밝아졌어요! 밝은 곳에서도 잘 보여요.',
+      off: '화면이 조금 어두워졌어요. 눈이 편안해져요.' },
+    { id: 'bt', name: '블루투스',
+      on: '블루투스가 켜졌어요! 무선 이어폰을 쓸 수 있어요.',
+      off: '블루투스를 껐어요. 이어폰 연결이 끊어져요.' },
+    { id: 'alarm', name: '알람',
+      on: '알람이 켜졌어요! 정한 시간에 소리로 알려 줘요.',
+      off: '알람을 껐어요. 약속 시간을 잊지 마세요.' },
+    { id: 'moon', name: '방해 금지',
+      on: '방해 금지가 켜졌어요! 밤에는 전화벨이 울리지 않아요.',
+      off: '방해 금지를 껐어요. 이제 전화를 받을 수 있어요.' },
+    { id: 'air', name: '비행기 모드',
+      on: '비행기 모드가 켜졌어요! 전화와 인터넷이 잠시 꺼져요.',
+      off: '비행기 모드를 껐어요! 이제 전화를 받을 수 있어요.' }
+  ];
+
+  /* =====================================================
+     상태
+     ===================================================== */
+  var state = {
+    tapCount: 0, tapDone: false,
+    holdActive: false, holdStart: 0, holdPct: 0, holdDone: false,
+    cardIndex: 0, cardsSeen: [true, false, false, false], swiped: false,
+    fontStep: 1, fontChanged: false,
+    typeIndex: 0,
+    tried: {}, swOn: {}
+  };
+  var wasAll = false;
+  var current = 'home';
+  var holdTimer = null;
+  var store = null;
+  try { store = (typeof window !== 'undefined' && window.localStorage) ? window.localStorage : null; } catch (e) { store = null; }
+
+  /* =====================================================
+     작은 도우미
+     ===================================================== */
+  function $(id) { return document.getElementById ? document.getElementById(id) : null; }
+  function setText(id, v) { var el = $(id); if (el) { el.textContent = String(v); } }
+  function setCls(id, cls, on) {
+    var el = $(id); if (!el || !el.classList) return;
+    if (on) el.classList.add(cls); else el.classList.remove(cls);
+  }
+  function setHidden(id, hidden) { var el = $(id); if (el) el.hidden = !!hidden; }
+  function say(id, text, tone) {
+    var el = $(id); if (!el) return;
+    el.textContent = text;
+    if (el.classList) {
+      el.classList.remove('good'); el.classList.remove('warn');
+      if (tone) el.classList.add(tone);
+    }
+  }
+  function clampInt(v, lo, hi) {
+    var n = parseInt(v, 10);
+    if (isNaN(n)) n = lo;
+    if (n < lo) n = lo;
+    if (n > hi) n = hi;
+    return n;
+  }
+  function switchDef(id) {
+    for (var i = 0; i < SWITCHES.length; i++) { if (SWITCHES[i].id === id) return SWITCHES[i]; }
+    return null;
+  }
+  function pulse(id) {
+    var el = $(id);
+    if (!el || !el.classList) return;
+    el.classList.remove('pulse');
+    el.classList.add('pulse');
+    try {
+      setTimeout(function () { if (el.classList) el.classList.remove('pulse'); }, 600);
+    } catch (e) {}
+  }
+
+  /* =====================================================
+     코스 완료 판정
+     ===================================================== */
+  function courseDone(n) {
+    if (n === 1) return state.tapDone && state.holdDone;
+    if (n === 2) {
+      var allSeen = true;
+      for (var i = 0; i < CARDS.length; i++) { if (!state.cardsSeen[i]) allSeen = false; }
+      return allSeen && state.swiped && state.fontChanged;
+    }
+    if (n === 3) return state.typeIndex >= SENTENCES.length;
+    if (n === 4) {
+      for (var j = 0; j < SWITCHES.length; j++) { if (!state.tried[SWITCHES[j].id]) return false; }
+      return true;
+    }
+    return false;
+  }
+  function doneCount() {
+    var n = 0;
+    for (var i = 1; i <= 4; i++) { if (courseDone(i)) n++; }
+    return n;
+  }
+  function allDone() { return doneCount() === 4; }
+
+  /* =====================================================
+     저장 / 복원
+     ===================================================== */
+  function snapshot() {
+    return {
+      v: 1,
+      tapCount: state.tapCount, tapDone: state.tapDone, holdDone: state.holdDone,
+      cardIndex: state.cardIndex, cardsSeen: state.cardsSeen.slice(), swiped: state.swiped,
+      fontStep: state.fontStep, fontChanged: state.fontChanged,
+      typeIndex: state.typeIndex,
+      tried: Object.keys(state.tried),
+      swOn: state.swOn
+    };
+  }
+  function save() {
+    if (!store) return;
+    try { store.setItem(STORE_KEY, JSON.stringify(snapshot())); } catch (e) {}
+  }
+  function restore(raw) {
+    if (!raw) return false;
+    var o;
+    try { o = JSON.parse(raw); } catch (e) { return false; }
+    if (!o || o.v !== 1) return false;
+    state.tapCount = clampInt(o.tapCount, 0, TAP_GOAL);
+    state.tapDone = !!o.tapDone;
+    if (state.tapCount >= TAP_GOAL) state.tapDone = true;
+    state.holdDone = !!o.holdDone;
+    state.holdPct = state.holdDone ? 100 : 0;
+    state.cardIndex = clampInt(o.cardIndex, 0, CARDS.length - 1);
+    if (o.cardsSeen && o.cardsSeen.length === CARDS.length) {
+      for (var i = 0; i < CARDS.length; i++) { state.cardsSeen[i] = !!o.cardsSeen[i]; }
+    }
+    state.cardsSeen[state.cardIndex] = true;
+    state.swiped = !!o.swiped;
+    state.fontStep = clampInt(o.fontStep, 0, FONT_SIZES.length - 1);
+    state.fontChanged = !!o.fontChanged;
+    state.typeIndex = clampInt(o.typeIndex, 0, SENTENCES.length);
+    state.tried = {};
+    if (o.tried && o.tried.length) {
+      for (var k = 0; k < o.tried.length; k++) { if (switchDef(o.tried[k])) state.tried[o.tried[k]] = true; }
+    }
+    state.swOn = {};
+    if (o.swOn) {
+      for (var id in o.swOn) {
+        if (o.swOn.hasOwnProperty(id) && o.swOn[id] && switchDef(id)) state.swOn[id] = true;
+      }
+    }
+    renderAll();
+    afterChange();
+    return true;
+  }
+  function savedRaw() {
+    if (!store) return null;
+    try { return store.getItem(STORE_KEY); } catch (e) { return null; }
+  }
+
+  /* =====================================================
+     화면 이동
+     ===================================================== */
+  function goScreen(name) {
+    current = name;
+    var keys = ['home', '1', '2', '3', '4'];
+    for (var i = 0; i < keys.length; i++) {
+      var el = $('screen-' + keys[i]);
+      if (!el || !el.classList) continue;
+      if (keys[i] === name) el.classList.add('on'); else el.classList.remove('on');
+    }
+    renderNav();
+    try { if (window.scrollTo) window.scrollTo(0, 0); } catch (e) {}
+    if (name === '2') renderSwipe();
+  }
+
+  function renderNav() {
+    setHidden('bottomnav', current === 'home');
+    setHidden('navNext', current === '4');
+    var idx = ['1', '2', '3', '4'].indexOf(current);
+    setHidden('navPrev', idx <= 0);
+  }
+
+  function nextCourse() {
+    var idx = ['1', '2', '3', '4'].indexOf(current);
+    if (idx < 0 || idx >= 3) return false;
+    goScreen(String(idx + 2));
+    return true;
+  }
+  function prevCourse() {
+    var idx = ['1', '2', '3', '4'].indexOf(current);
+    if (idx <= 0) return false;
+    goScreen(String(idx));
+    return true;
+  }
+
+  /* =====================================================
+     코스 1 : 톡 / 꾹
+     ===================================================== */
+  function tapOnce() {
+    if (state.tapDone) {
+      say('tapMsg', '다섯 번을 모두 마쳤어요. 다시 하려면 [이 연습 다시 하기]를 눌러 주세요.', 'good');
+      return false;
+    }
+    state.tapCount = Math.min(TAP_GOAL, state.tapCount + 1);
+    if (state.tapCount >= TAP_GOAL) {
+      state.tapDone = true;
+      renderTap();
+      pulse('tapBtn');
+      say('tapMsg', '다섯 번 모두 누르셨어요! 이렇게 가볍게 톡 누르면 됩니다 👏', 'good');
+    } else {
+      renderTap();
+      say('tapMsg', state.tapCount + '번 눌렀어요! ' + (TAP_GOAL - state.tapCount) + '번 더 눌러 보세요.', 'good');
+    }
+    afterChange();
+    return true;
+  }
+
+  function renderTap() {
+    setText('tapCount', state.tapCount + ' / ' + TAP_GOAL);
+    var show = state.tapDone ? (TAP_GOAL - 1) % 3 : state.tapCount % 3;
+    for (var i = 0; i < 3; i++) { setCls('tapIcon-' + i, 'show', i === show); }
+    setCls('tapBtn', 'done', state.tapDone);
+    setHidden('c1Note', !courseDone(1));
+    if (courseDone(1)) setText('c1Note', '이 코스를 다 하셨어요! 이제 [다음]을 눌러 볼까요? 👏');
+  }
+
+  function stopHoldTimer() {
+    if (holdTimer != null) {
+      try { clearInterval(holdTimer); } catch (e) {}
+      holdTimer = null;
+    }
+  }
+  function holdBegin(t) {
+    if (state.holdDone) {
+      say('holdMsg', '이미 꾹 누르기를 성공하셨어요! 다시 해 보려면 [이 연습 다시 하기]를 눌러 주세요.', 'good');
+      return false;
+    }
+    var now = (typeof t === 'number') ? t : Date.now();
+    state.holdActive = true;
+    state.holdStart = now;
+    state.holdPct = 0;
+    renderHold();
+    if (holdTimer == null) {
+      try { holdTimer = setInterval(holdTick, 40); } catch (e) { holdTimer = null; }
+    }
+    return true;
+  }
+  function holdTick() { if (state.holdActive) holdUpdate(Date.now()); }
+  function holdUpdate(t) {
+    if (!state.holdActive) return false;
+    var now = (typeof t === 'number') ? t : Date.now();
+    var el = now - state.holdStart;
+    if (el < 0) el = 0;
+    var pct = (el >= HOLD_MS) ? 100 : Math.floor(el / HOLD_MS * 100);
+    state.holdPct = pct;
+    if (pct >= 100) {
+      state.holdDone = true;
+      state.holdActive = false;
+      stopHoldTimer();
+      renderHold();
+      say('holdMsg', '꾹 누르기 성공! 이렇게 오래 누르면 새 메뉴가 열려요 👍', 'good');
+      afterChange();
+      return true;
+    }
+    renderHold();
+    return false;
+  }
+  function holdEnd(t) {
+    var wasActive = state.holdActive;
+    if (wasActive) {
+      state.holdActive = false;
+      stopHoldTimer();
+      if (!state.holdDone) {
+        state.holdPct = 0;
+        renderHold();
+        say('holdMsg', '살짝 짧았어요. 손가락을 떼지 말고 조금 더 길게 눌러 보세요 🙂', 'warn');
+        return false;
+      }
+    }
+    return state.holdDone;
+  }
+  function renderHold() {
+    var pct = state.holdDone ? 100 : state.holdPct;
+    setText('holdPct', Math.round(pct) + '%');
+    var ring = $('holdRing');
+    if (ring && ring.style) ring.style.strokeDashoffset = String(528 * (1 - pct / 100));
+    setCls('holdBtn', 'done', state.holdDone);
+  }
+
+  /* =====================================================
+     코스 2 : 스와이프 / 글씨 크기
+     ===================================================== */
+  function goCard(i) {
+    if (i < 0) i = 0;
+    if (i > CARDS.length - 1) i = CARDS.length - 1;
+    state.cardIndex = i;
+    state.cardsSeen[i] = true;
+    renderSwipe();
+    afterChange();
+    return i;
+  }
+  function goStep(d) {
+    var n = state.cardIndex + d;
+    if (n < 0) {
+      say('swipeMsg', '첫 번째 카드예요. 이쪽으로는 더 넘길 카드가 없어요.', 'warn');
+      return false;
+    }
+    if (n > CARDS.length - 1) {
+      say('swipeMsg', '마지막 카드예요. 이쪽으로는 더 넘길 카드가 없어요.', 'warn');
+      return false;
+    }
+    goCard(n);
+    say('swipeMsg', '잘 넘기셨어요! ' + (n + 1) + '번째 카드입니다.', 'good');
+    return true;
+  }
+  function swipeGesture(d) {
+    state.swiped = true;
+    var moved = goStep(d);
+    if (moved && courseDone(2)) {
+      say('swipeMsg', '옆으로 밀기 완성! 카드를 넘기는 방법을 배우셨어요 👏', 'good');
+    }
+    return moved;
+  }
+  function previewDrag(dx) {
+    var tr = $('track'); if (!tr || !tr.style) return;
+    var base = -state.cardIndex * 100;
+    if (dx) tr.style.transform = 'translateX(calc(' + base + '% + ' + dx + 'px))';
+    else tr.style.transform = 'translateX(' + base + '%)';
+  }
+  function renderSwipe() {
+    previewDrag(0);
+    setText('cardCount', (state.cardIndex + 1) + ' / ' + CARDS.length);
+    for (var i = 0; i < CARDS.length; i++) {
+      setCls('d-' + i, 'on', i === state.cardIndex);
+      setCls('slide-' + i, 'on', i === state.cardIndex);
+    }
+  }
+  function changeFont(d) {
+    var n = state.fontStep + d;
+    if (n < 0) {
+      say('fontMsg', '더 작게는 안 돼요. 이만큼이 가장 작은 글씨예요.', 'warn');
+      return -1;
+    }
+    if (n > FONT_SIZES.length - 1) {
+      say('fontMsg', '이만큼이 가장 큰 글씨예요. 아주 잘 보이지요?', 'warn');
+      return -1;
+    }
+    state.fontStep = n;
+    state.fontChanged = true;
+    renderFont();
+    say('fontMsg', '글씨가 [' + FONT_LABELS[n] + ']가 되었어요!', 'good');
+    afterChange();
+    return n;
+  }
+  function renderFont() {
+    var p = $('fontSample');
+    if (p && p.style) p.style.fontSize = FONT_SIZES[state.fontStep] + 'px';
+    setText('fontLabel', FONT_LABELS[state.fontStep]);
+  }
+
+  /* =====================================================
+     코스 3 : 글자 입력
+     ===================================================== */
+  function normalizeText(s) {
+    return String(s == null ? '' : s)
+      .replace(/[\s\u3000]/g, '')
+      .replace(/[.,!?~…·:;"'“”‘’()\[\]<>]/g, '')
+      .toLowerCase();
+  }
+  function currentSentence() { return SENTENCES[Math.min(state.typeIndex, SENTENCES.length - 1)]; }
+  function submitTyping(value) {
+    if (state.typeIndex >= SENTENCES.length) {
+      return { ok: false, done: true, target: currentSentence(), msg: '이미 세 문장을 모두 마쳤어요.' };
+    }
+    var target = currentSentence();
+    var v = value;
+    if (v === undefined || v === null) {
+      var inp = $('typeInput');
+      v = inp ? inp.value : '';
+    }
+    if (!normalizeText(v)) {
+      say('typeMsg', '입력창을 눌러 글자를 써 보세요.', 'warn');
+      return { ok: false, done: false, empty: true, target: target };
+    }
+    if (normalizeText(v) === normalizeText(target)) {
+      state.typeIndex++;
+      var done = state.typeIndex >= SENTENCES.length;
+      var inp2 = $('typeInput'); if (inp2) inp2.value = '';
+      renderType();
+      pulse('typeTarget');
+      if (done) { say('typeMsg', '세 문장을 모두 해냈어요! 정말 잘하셨습니다 👏', 'good'); }
+      else { say('typeMsg', PRAISE[(state.typeIndex - 1) % PRAISE.length], 'good'); }
+      afterChange();
+      return { ok: true, done: done, index: state.typeIndex, target: target, next: done ? null : SENTENCES[state.typeIndex] };
+    }
+    say('typeMsg', '아주 비슷해요! 위의 문장을 한 글자씩 보고 다시 써 보세요.', 'warn');
+    return { ok: false, done: false, target: target };
+  }
+  function renderType() {
+    var done = state.typeIndex >= SENTENCES.length;
+    setText('typeTarget', done ? '모두 마쳤어요! 🎉' : SENTENCES[state.typeIndex]);
+    setCls('typeTarget', 'done', done);
+    setText('typeCount', Math.min(state.typeIndex + 1, SENTENCES.length) + ' / ' + SENTENCES.length);
+    var btn = $('typeCheck'); if (btn) btn.disabled = done;
+    if (done) { var inp = $('typeInput'); if (inp) inp.value = ''; }
+  }
+
+  /* =====================================================
+     코스 4 : 아이콘 스위치
+     ===================================================== */
+  function toggleSwitch(id) {
+    var d = switchDef(id);
+    if (!d) return null;
+    var on = !state.swOn[id];
+    if (on) state.swOn[id] = true; else delete state.swOn[id];
+    state.tried[id] = true;
+    renderSwitch();
+    var msg = on ? d.on : d.off;
+    say('swBig', msg, 'good');
+    afterChange();
+    return { id: id, name: d.name, on: on, msg: msg, done: courseDone(4) };
+  }
+  function renderSwitch() {
+    for (var i = 0; i < SWITCHES.length; i++) {
+      var d = SWITCHES[i];
+      var on = !!state.swOn[d.id];
+      var tried = !!state.tried[d.id];
+      setCls('tile-' + d.id, 'on', on);
+      var tile = $('tile-' + d.id);
+      if (tile && tile.setAttribute) tile.setAttribute('aria-pressed', on ? 'true' : 'false');
+      setText('state-' + d.id, on ? '켜짐' : (tried ? '꺼짐 · 눌러 봄' : '꺼짐'));
+    }
+    var n = 0;
+    for (var k in state.tried) { if (state.tried.hasOwnProperty(k) && state.tried[k]) n++; }
+    setText('swCount', '8개 중 ' + n + '개 눌러 봄');
+  }
+
+  /* =====================================================
+     전체 렌더
+     ===================================================== */
+  function renderStamps() {
+    for (var i = 1; i <= 4; i++) { setCls('stamp-' + i, 'on', courseDone(i)); }
+    var n = doneCount();
+    setText('ptext', '4개 중 ' + n + '개 완료');
+    var pf = $('pfill'); if (pf && pf.style) pf.style.width = (n * 25) + '%';
+    return n;
+  }
+  function renderHome() {
+    for (var n = 1; n <= 4; n++) {
+      var ok = courseDone(n);
+      setText('hc-' + n, ok ? '연습 완료 ✅' : '아직이에요');
+      setCls('hc-' + n, 'done', ok);
+    }
+  }
+  function renderBanner() {
+    var all = allDone();
+    setHidden('allDone', !all);
+    var el = $('allDone');
+    if (all && !wasAll && el && el.classList) {
+      el.classList.remove('pop');
+      el.classList.add('pop');
+    }
+    wasAll = all;
+  }
+  function afterChange() {
+    setHidden('c1Note', !courseDone(1));
+    renderStamps();
+    renderHome();
+    renderBanner();
+    save();
+  }
+  function renderAll() {
+    renderTap(); renderHold(); renderSwipe(); renderFont(); renderType(); renderSwitch();
+    renderStamps(); renderHome(); renderBanner(); renderNav();
+  }
+
+  /* =====================================================
+     다시 하기
+     ===================================================== */
+  function resetCourse(n) {
+    if (n === 1) {
+      state.tapCount = 0; state.tapDone = false;
+      state.holdDone = false; state.holdActive = false; state.holdPct = 0;
+      stopHoldTimer();
+      say('tapMsg', '그림을 손가락으로 가볍게 눌러 보세요.', '');
+      say('holdMsg', '손가락을 대고 있으면 동그라미가 차올라요.', '');
+    } else if (n === 2) {
+      state.cardIndex = 0;
+      state.cardsSeen = [true, false, false, false];
+      state.swiped = false;
+      state.fontStep = 1; state.fontChanged = false;
+      say('swipeMsg', '카드 위에서 손가락을 왼쪽으로 쓱 밀어 보세요.', '');
+      say('fontMsg', '[＋ 크게]를 눌러 글씨를 키워 보세요.', '');
+    } else if (n === 3) {
+      state.typeIndex = 0;
+      var inp = $('typeInput'); if (inp) inp.value = '';
+      say('typeMsg', '입력창을 누르면 글자를 쓸 수 있어요.', '');
+    } else if (n === 4) {
+      state.tried = {}; state.swOn = {};
+      say('swBig', '아이콘을 눌러 보세요.', '');
+    }
+    renderAll();
+    afterChange();
+  }
+  function resetAll() {
+    state.tapCount = 0; state.tapDone = false;
+    state.holdDone = false; state.holdActive = false; state.holdPct = 0;
+    stopHoldTimer();
+    state.cardIndex = 0;
+    state.cardsSeen = [true, false, false, false];
+    state.swiped = false;
+    state.fontStep = 1; state.fontChanged = false;
+    state.typeIndex = 0;
+    state.tried = {}; state.swOn = {};
+    var inp = $('typeInput'); if (inp) inp.value = '';
+    say('tapMsg', '그림을 손가락으로 가볍게 눌러 보세요.', '');
+    say('holdMsg', '손가락을 대고 있으면 동그라미가 차올라요.', '');
+    say('swipeMsg', '카드 위에서 손가락을 왼쪽으로 쓱 밀어 보세요.', '');
+    say('fontMsg', '[＋ 크게]를 눌러 글씨를 키워 보세요.', '');
+    say('typeMsg', '입력창을 누르면 글자를 쓸 수 있어요.', '');
+    say('swBig', '아이콘을 눌러 보세요.', '');
+    setHidden('micPanel', true);
+    renderAll();
+    afterChange();
+    goScreen('home');
+    return true;
+  }
+
+  /* =====================================================
+     이벤트 연결
+     ===================================================== */
+  function on(id, ev, fn) {
+    var el = $(id);
+    if (el && el.addEventListener) el.addEventListener(ev, fn);
+  }
+
+  function bindTapPress() {
+    var el = $('tapBtn');
+    if (!el || !el.addEventListener) return;
+    el.addEventListener('click', function (e) { if (e && e.preventDefault) e.preventDefault(); tapOnce(); });
+  }
+
+  function bindHoldPress() {
+    var el = $('holdBtn');
+    if (!el || !el.addEventListener) return;
+    function down(e) { if (e && e.preventDefault) e.preventDefault(); holdBegin(); }
+    function up() { holdEnd(); }
+    el.addEventListener('contextmenu', function (e) { if (e && e.preventDefault) e.preventDefault(); });
+    if (typeof window !== 'undefined' && window.PointerEvent) {
+      el.addEventListener('pointerdown', down);
+      el.addEventListener('pointerup', up);
+      el.addEventListener('pointercancel', up);
+      el.addEventListener('pointerleave', up);
+    } else {
+      el.addEventListener('touchstart', down);
+      el.addEventListener('touchend', up);
+      el.addEventListener('touchcancel', up);
+      el.addEventListener('mousedown', down);
+      el.addEventListener('mouseup', up);
+      el.addEventListener('mouseleave', up);
+    }
+  }
+
+  function bindSwipe() {
+    var el = $('stage');
+    if (!el || !el.addEventListener) return;
+    var startX = 0, dx = 0, dragging = false, moved = false;
+
+    function pointOf(e) {
+      if (e && e.touches && e.touches.length) return e.touches[0];
+      if (e && e.changedTouches && e.changedTouches.length) return e.changedTouches[0];
+      return e || { clientX: 0 };
+    }
+    function down(e) {
+      var p = pointOf(e);
+      startX = p.clientX || 0;
+      dx = 0; dragging = true; moved = false;
+    }
+    function move(e) {
+      if (!dragging) return;
+      var p = pointOf(e);
+      dx = (p.clientX || 0) - startX;
+      if (Math.abs(dx) > 6) moved = true;
+      previewDrag(dx);
+      if (moved && e && e.cancelable && e.preventDefault) e.preventDefault();
+    }
+    function up() {
+      if (!dragging) return;
+      dragging = false;
+      previewDrag(0);
+      if (dx <= -SWIPE_MIN) { swipeGesture(1); }
+      else if (dx >= SWIPE_MIN) { swipeGesture(-1); }
+      else if (moved) { say('swipeMsg', '조금만 더 크게 밀어 보세요. 손가락을 옆으로 길게 그으세요.', 'warn'); }
+      dx = 0;
+    }
+    el.addEventListener('contextmenu', function (e) { if (e && e.preventDefault) e.preventDefault(); });
+    if (typeof window !== 'undefined' && window.PointerEvent) {
+      el.addEventListener('pointerdown', down);
+      el.addEventListener('pointermove', move);
+      el.addEventListener('pointerup', up);
+      el.addEventListener('pointercancel', up);
+      el.addEventListener('pointerleave', up);
+    } else {
+      el.addEventListener('touchstart', down, { passive: true });
+      el.addEventListener('touchmove', move, { passive: false });
+      el.addEventListener('touchend', up);
+      el.addEventListener('touchcancel', up);
+      el.addEventListener('mousedown', down);
+      el.addEventListener('mousemove', move);
+      el.addEventListener('mouseup', up);
+      el.addEventListener('mouseleave', up);
+    }
+  }
+
+  function wire() {
+    var i;
+    for (i = 1; i <= 4; i++) {
+      (function (n) {
+        on('start-' + n, 'click', function () { goScreen(String(n)); });
+        on('back-' + n, 'click', function () { goScreen('home'); });
+        on('reset-' + n, 'click', function () { resetCourse(n); });
+      })(i);
+    }
+    on('allDoneBtn', 'click', function () { resetAll(); });
+    on('resetAll', 'click', function () { resetAll(); });
+
+    bindTapPress();
+    bindHoldPress();
+    bindSwipe();
+
+    on('prevCard', 'click', function () { goStep(-1); });
+    on('nextCard', 'click', function () { goStep(1); });
+    on('fontUp', 'click', function () { changeFont(1); });
+    on('fontDown', 'click', function () { changeFont(-1); });
+
+    on('typeCheck', 'click', function () { submitTyping(); });
+    on('typeClear', 'click', function () {
+      var inp = $('typeInput'); if (inp) { inp.value = ''; }
+      say('typeMsg', '지웠어요. 다시 써 보세요.', '');
+    });
+    on('typeInput', 'keydown', function (e) {
+      if (e && (e.key === 'Enter' || e.keyCode === 13)) {
+        if (e.preventDefault) e.preventDefault();
+        submitTyping();
+      }
+    });
+    on('micTip', 'click', function () {
+      var p = $('micPanel');
+      if (p) p.hidden = !p.hidden;
+    });
+
+    for (i = 0; i < SWITCHES.length; i++) {
+      (function (id) {
+        on('tile-' + id, 'click', function () { toggleSwitch(id); });
+      })(SWITCHES[i].id);
+    }
+
+    on('navHome', 'click', function () { goScreen('home'); });
+    on('navNext', 'click', function () { nextCourse(); });
+    on('navPrev', 'click', function () { prevCourse(); });
+  }
+
+  /* =====================================================
+     시작
+     ===================================================== */
+  function init() {
+    restore(savedRaw());
+    wire();
+    renderAll();
+    goScreen('home');
+  }
+
+  init();
+
+  /* 검증용 공개 API */
+  window.PRACTICE = {
+    state: state,
+    TAP_GOAL: TAP_GOAL,
+    HOLD_MS: HOLD_MS,
+    SWIPE_MIN: SWIPE_MIN,
+    FONT_SIZES: FONT_SIZES,
+    FONT_LABELS: FONT_LABELS,
+    SENTENCES: SENTENCES,
+    CARDS: CARDS,
+    SWITCHES: SWITCHES,
+    courseDone: courseDone,
+    doneCount: doneCount,
+    allDone: allDone,
+    tapOnce: tapOnce,
+    holdBegin: holdBegin,
+    holdUpdate: holdUpdate,
+    holdEnd: holdEnd,
+    goCard: goCard,
+    goStep: goStep,
+    swipeGesture: swipeGesture,
+    changeFont: changeFont,
+    normalizeText: normalizeText,
+    currentSentence: currentSentence,
+    submitTyping: submitTyping,
+    toggleSwitch: toggleSwitch,
+    resetCourse: resetCourse,
+    resetAll: resetAll,
+    goScreen: goScreen,
+    snapshot: snapshot,
+    restore: restore,
+    savedRaw: savedRaw,
+    STORE_KEY: STORE_KEY
+  };
+})();
+</script>
+</body>
+</html>
